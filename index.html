@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!-- Script de Redirecionamento Automático de Idioma -->
+    <script>
+      (function() {
+          var urlIngles = '/en/edicao1-ricky-beato-geddy-lee';
+          var urlEspanhol = '/es/edicao1-ricky-beato-geddy-lee';
+          var rotaPortugues = '/edicao1-ricky-beato-geddy-lee';
+          
+          var currentPath = window.location.pathname.replace(/\/$/, "");
+          if (currentPath !== rotaPortugues) return;
+          
+          var rawLang = navigator.language || navigator.userLanguage || "";
+          var lang = rawLang.slice(0, 2).toLowerCase();
+          if (lang === 'pt' || !lang) return;
+          
+          var queryString = window.location.search;
+          if (lang === 'en') window.location.replace(urlIngles + queryString);
+          else if (lang === 'es') window.location.replace(urlEspanhol + queryString);
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal Rush Brasil | Geddy Lee & Alex Lifeson × Rick Beato</title>
+    <meta name="description" content="Explore a entrevista definitiva do Rush com Rick Beato. Os segredos de estúdio, o legado e o futuro da maior banda de Prog-Rock do planeta.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,800;1,400&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

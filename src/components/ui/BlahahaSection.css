@@ -1,0 +1,423 @@
+/* ==========================================================================
+   Blahaha Humor Section Styles (Digital Magazine Staggered Dialogue Layout)
+   ========================================================================== */
+
+@font-face {
+  font-family: 'FlyByNightitalic';
+  src: url('../../../public/rushfonts/FlyByNightitalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HoldYourFireBlack';
+  src: url('../../../public/rushfonts/HoldYourFireBlack.ttf') format('truetype');
+}
+
+.blahaha-section {
+  width: 100%;
+  max-width: 1800px;
+  margin: 8rem auto; /* Increased margin for fold breathing room */
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.blahaha-container {
+  background-color: #121212;
+  border-radius: 20px;
+  padding: 70px 80px; /* Generous padding */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.blahaha-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #ff0000, #ff5722, #ffeb3b);
+}
+
+/* Header */
+.blahaha-header {
+  margin-bottom: 54px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Distinct flex gaps to prevent overlapping badge and title */
+}
+
+.blahaha-badge {
+  font-family: 'Neue Machina', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #a0a0a0; /* Changed to muted gray to separate from red title */
+  text-transform: uppercase;
+  display: inline-block;
+  margin: 0;
+}
+
+.blahaha-title-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 24px; /* Increased space between Session and Title as requested */
+}
+
+.blahaha-title {
+  font-family: 'FlyByNightitalic', 'Neue Machina', sans-serif;
+  font-size: clamp(2.8rem, 5.8vw, 5.2rem);
+  font-weight: 900;
+  color: #ff3b30; /* Written in RED as requested */
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+}
+
+/* Zine laughing mouth cartoon */
+.laughing-mouth-svg {
+  width: clamp(65px, 8vw, 85px);
+  height: auto;
+  margin-left: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  transform: rotate(-6deg);
+  filter: drop-shadow(3px 5px 0px #111);
+}
+
+.blahaha-subtitle {
+  font-family: 'HoldYourFireBlack', 'Inter', sans-serif;
+  font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+  color: #ff5a36; /* High contrast orange */
+  margin-top: 18px; /* Safe space below the giant red title */
+  font-weight: normal;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+/* Two-Column Grid */
+.blahaha-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Left Column: Embed & Explanation */
+.blahaha-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  width: 100%;
+}
+
+.instagram-embed-wrapper {
+  width: 100%;
+  background-color: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  justify-content: center;
+}
+
+.instagram-iframe {
+  display: block;
+  max-width: 100%;
+}
+
+/* Explanation card */
+.blahaha-explanation-card {
+  background-color: rgba(255, 253, 246, 0.05);
+  border: 3px dashed #ff5a36;
+  padding: 26px;
+  border-radius: 12px;
+  box-shadow: 6px 6px 0px #111;
+  position: relative;
+  transform: rotate(-0.5deg);
+  transition: transform 0.3s ease;
+}
+
+.blahaha-explanation-card:hover {
+  transform: scale(1.02) rotate(0.5deg);
+}
+
+.explanation-title {
+  font-family: 'Neue Machina', sans-serif;
+  font-weight: 900;
+  color: #ffe600; /* Yellow highlight */
+  text-transform: uppercase;
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  display: block;
+  letter-spacing: 0.05em;
+}
+
+.explanation-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #e5e5e5;
+  margin: 0;
+}
+
+/* Right Column: Intro & Dialogue */
+.blahaha-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Introductory text is larger and formatted in Neue Machina style */
+.blahaha-intro-text {
+  font-family: 'Neue Machina', 'Inter', sans-serif;
+  font-size: clamp(1.2rem, 1.5vw, 1.42rem); /* Larger font size as requested */
+  line-height: 1.7; /* Breathing height */
+  color: #fffdf6; /* High contrast cream white */
+  margin: 0;
+}
+
+/* Magazine layout Drop Cap (Capitular) */
+.magazine-drop-cap {
+  font-family: 'SnakesAndArrowsAltBold', sans-serif;
+  float: left;
+  font-size: clamp(3rem, 6.5vw, 4.2rem);
+  line-height: 0.8;
+  padding: 12px 15px;
+  margin: 5px 15px 5px 0;
+  background-color: #0084ff; /* Royal blue stamp block */
+  color: #fffdf6; /* Letter E/S in cream */
+  border: 3px solid #fffdf6;
+  border-radius: 6px;
+  transform: rotate(-4deg) translateY(-2px);
+  box-shadow: 4px 4px 0px #111;
+  text-transform: uppercase;
+}
+
+/* Specific lead-in text styled in Snakes & Arrows, blue */
+.intro-lead-in {
+  font-family: 'SnakesAndArrowsAltBold', sans-serif;
+  font-size: 1.18em;
+  color: #0084ff; /* Cool royal blue */
+  display: inline;
+  font-weight: normal;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+  margin-right: 4px;
+}
+
+.intro-p1 {
+  margin: 0 0 20px 0;
+}
+
+.intro-p2 {
+  margin: 0 0 20px 0;
+}
+
+/* Paragraph 3 in Beyond the Lighted Stage */
+.intro-p3 {
+  font-family: 'BeyondTheLightedStage', sans-serif;
+  font-size: 1.35em;
+  line-height: 1.4;
+  color: #e8ddb7; /* Cream color */
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+/* Dialogue log */
+.dialogue-chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.dialogue-bubble {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 88%;
+  padding: 16px 22px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 0px #111;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dialogue-bubble:hover {
+  transform: scale(1.025) !important;
+  box-shadow: 8px 8px 0px #111;
+}
+
+.bubble-ged {
+  align-self: flex-start;
+  background-color: #fffdf6; /* Cream color */
+  color: #111;
+  border: 3px solid #111;
+  transform: rotate(-1deg) skewX(-1.5deg);
+}
+
+.bubble-alex {
+  align-self: flex-end;
+  background-color: #ff5a36; /* Coral orange */
+  color: #fffdf6;
+  border: 3px solid #fffdf6;
+  transform: rotate(0.8deg) skewX(1deg);
+}
+
+/* Speaker labels */
+.bubble-speaker-tag {
+  font-family: 'SnakesAndArrowsAltBold', 'Neue Machina', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  font-weight: 900;
+}
+
+.bubble-ged .bubble-speaker-tag {
+  color: #d11212; /* Red ink marker */
+}
+
+.bubble-alex .bubble-speaker-tag {
+  color: #ffe600; /* Yellow highlight */
+}
+
+.bubble-message-text {
+  margin: 0;
+  font-size: 1.05rem;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.45;
+  white-space: pre-line;
+}
+
+/* Stage direction inside brackets [text] */
+.stage-direction {
+  font-style: italic;
+  font-weight: 700;
+  display: block;
+  margin: 8px 0;
+  letter-spacing: 0.02em;
+}
+
+.bubble-ged .stage-direction {
+  color: #d11212;
+}
+
+.bubble-alex .stage-direction {
+  color: #ffe600;
+}
+
+/* Sausage-Shaped Dialogue Bubble */
+.bubble-sausage {
+  align-self: flex-start;
+  background-color: #d14d3b; /* Sausage pinkish-red */
+  color: #fffdf6; /* High contrast text */
+  border: 4px solid #111; /* Stark comic boundary */
+  border-radius: 60px; /* Extremely rounded capsule shape representing a sausage! */
+  padding: 18px 36px;
+  position: relative;
+  transform: rotate(-1.5deg) translateX(15px); /* Indented slightly to clear the left knot */
+  box-shadow: 6px 6px 0px #111;
+  max-width: 90%;
+  margin-top: 15px;
+  box-sizing: border-box;
+}
+
+/* Left twist tie of the sausage */
+.bubble-sausage::before {
+  content: "";
+  position: absolute;
+  left: -11px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-15deg);
+  width: 14px;
+  height: 20px;
+  background-color: #b03626; /* Darker sausage skin tie */
+  border: 3px solid #111;
+  border-radius: 4px 10px 10px 4px;
+  box-sizing: border-box;
+}
+
+/* Right twist tie of the sausage */
+.bubble-sausage::after {
+  content: "";
+  position: absolute;
+  right: -11px;
+  top: 50%;
+  transform: translateY(-50%) rotate(15deg);
+  width: 14px;
+  height: 20px;
+  background-color: #b03626;
+  border: 3px solid #111;
+  border-radius: 10px 4px 4px 10px;
+  box-sizing: border-box;
+}
+
+.bubble-sausage .bubble-speaker-tag {
+  color: #ffe600 !important; /* Standout yellow label */
+}
+
+/* ========================================================================== */
+   Responsive Overrides
+   ========================================================================== */
+
+@media (max-width: 991px) {
+  .blahaha-container {
+    padding: 40px 24px;
+  }
+  .blahaha-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .dialogue-bubble {
+    max-width: 95%;
+  }
+}
+
+/* =============================================
+   3D Pop-out Poster Styles
+   ============================================= */
+.poster-3d-wrapper {
+  width: 100%;
+  max-width: 480px;
+  margin: 3rem auto 0 auto;
+  aspect-ratio: 2 / 2.85; /* Visual aspect ratio */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+
+.poster-3d-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 
+              0 0 0 1px rgba(255, 255, 255, 0.1);
+  overflow: visible; /* Crucial for pop-out effect! */
+}
+
+.poster-layer {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.base-layer {
+  filter: brightness(0.65) contrast(1.1); /* Background slightly darker */
+}
+
+.overlay-layer {
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
+  pointer-events: none; /* Let clicks pass through */
+}
