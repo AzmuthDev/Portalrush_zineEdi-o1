@@ -13,6 +13,7 @@ export const EditorialSection = ({ t, language }) => {
     pt: {
       tagline: 'Era uma Zine que a gente tanto queria.',
       p1: 'Já tem um bom tempo que buscávamos uma amálgama de conteúdo sobre o Rush que pudesse ser: profundo, pautado na bibliografia da banda, misturado com entretenimento, gamificação, design e histórias de fãs que nenhuma IA com muitos terabytes vai conseguir contar.',
+      p1Mobile: 'Buscávamos conteúdo sobre o Rush que unisse bibliografia da banda, entretenimento, gamificação e histórias de fãs impossíveis para a IA.',
       p2: 'Encontramos! Era uma ZINE, uma revista digital que a gente tanto queria. Assim dá tempo (em teste) da gente elaborar, avaliar com a devida profundidade, pesquisar, ir atrás das nossas fontes. ERA Uma ZINE com cara do PORTAL, PÔXA!',
       p3: 'Bem, o feedback e o rico e grande dinheiro dos nossos fãs (e futuros fãs) que vão pautar esse trabalho do Portal Rush Brasil. Veja nossas condições:',
       goals: [
@@ -24,6 +25,7 @@ export const EditorialSection = ({ t, language }) => {
     en: {
       tagline: 'The Zine we wanted so much.',
       p1: 'For a long time, we were looking for a mix of Rush content that could be: deep, based on the band\'s bibliography, mixed with entertainment, gamification, design, and fan stories that no AI with many terabytes will ever be able to tell.',
+      p1Mobile: 'We wanted Rush content blending bibliography, entertainment, gamification, and unique fan stories impossible for AI to replicate.',
       p2: 'We found it! It was a ZINE, a digital magazine we wanted so much. This gives us time (in testing) to elaborate, evaluate with the proper depth, research, and go after our sources. It was a ZINE with the Portal\'s face, boy!',
       p3: 'Well, the feedback and the rich and big money of our fans (and future fans) will guide this work of Portal Rush Brasil. See our goals:',
       goals: [
@@ -35,6 +37,7 @@ export const EditorialSection = ({ t, language }) => {
     es: {
       tagline: 'La Zine que tanto queríamos.',
       p1: 'Durante mucho tiempo, buscábamos una mezcla de contenido sobre Rush que pudiera ser: profundo, basado en la bibliografía de la banda, mezclado con entretenimiento, gamificación, diseño e historias de fans que ninguna IA con muitos terabytes podrá contar jamás.',
+      p1Mobile: 'Buscábamos contenido de Rush uniendo bibliografía, entretenimiento, gamificación e historias de fans imposibles para la IA.',
       p2: '¡La encontramos! Era uma ZINE, uma revista digital que tanto queríamos. Así nos da tiempo (en prueba) de elaborar, evaluar con la debida profundidad, investigar, ir tras nuestras fuentes. ¡Era una ZINE con la cara de PORTAL, che!',
       p3: 'Bueno, los comentarios y el rico y gran dinero de nossos fans (y futuros fans) guiarán este trabajo de Portal Rush Brasil. Mira nuestras metas:',
       goals: [
@@ -195,10 +198,14 @@ export const EditorialSection = ({ t, language }) => {
             
             {/* Tânios Guitar Image */}
             <div className="editorial-poster-image-container">
-              <img 
+              <motion.img 
                 src={`${import.meta.env.BASE_URL}tanios_guita_air_acacio.png`} 
                 alt="Tânios Acácio tocando air guitar" 
                 className="editorial-poster-image"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               />
               <p className="editorial-image-caption">
                 {highlightEditorialText("Tânios Acácio - Criador do Portal Rush Brasil tocando seu primeiro air guitar no show cover do Rush.")}
@@ -213,15 +220,83 @@ export const EditorialSection = ({ t, language }) => {
           {/* Right Column: Editorial Text */}
           <div className="poster-text-col">
             <div className="editorial-body-wrapper">
-              <h3 className="editorial-tagline">
+              <motion.h3 
+                className="editorial-tagline"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: "-50px" }}
+                transition={{ duration: 0.5 }}
+              >
                 "{highlightEditorialText(text.tagline)}"
-              </h3>
+              </motion.h3>
               
               <div className="editorial-divider"></div>
               
+              {/* The Big Money Title (Moved Up) */}
+              <motion.h4 
+                className="editorial-big-money-title"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.5 }}
+                style={{ display: "inline-block", marginTop: "1rem" }}
+              >
+                {"THE BIG MONEY".split("").map((char, index) => (
+                  <motion.span
+                    key={index}
+                    style={{ display: "inline-block" }}
+                    variants={{
+                      hidden: { color: "#ff5a36", y: 0 },
+                      visible: {
+                        color: ["#ff5a36", "#10b981", "#10b981"], // Turns green (money color)
+                        y: [0, -8, 0], // slight bounce
+                        transition: {
+                          duration: 0.6,
+                          delay: index * 0.08,
+                          ease: "easeInOut",
+                          times: [0, 0.4, 1]
+                        }
+                      }
+                    }}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+              </motion.h4>
+
+              {/* Visual Goal/Conditions Grid (Gradated color) */}
+              <div className="editorial-goals-grid">
+                {text.goals.map((g, idx) => (
+                  <motion.div 
+                    key={idx} 
+                    className={`editorial-goal-card goal-card-${idx}`}
+                    whileHover={{ 
+                      scale: 1.02, 
+                      borderRadius: "8px 8px 8px 8px"
+                    }}
+                    transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+                    onClick={() => handleGoalClick(idx)}
+                  >
+                    <span className="goal-label" style={{ flex: 1, textAlign: 'left', fontWeight: 'bold' }}>{highlightEditorialText(g.label)}</span>
+                    
+                    <motion.div
+                      animate={{ x: [0, 8, 0] }}
+                      transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                      style={{ display: 'flex', alignItems: 'center', opacity: 0.8, padding: '0 10px' }}
+                    >
+                      <ArrowRight size={24} />
+                    </motion.div>
+
+                    <span className="goal-value" style={{ flex: 1, textAlign: 'right' }}>{g.value}</span>
+                  </motion.div>
+                ))}
+              </div>
+
               <div className="editorial-paragraphs">
-                <p className="editorial-highlight-para">
+                <p className="editorial-highlight-para hide-on-mobile">
                   {highlightEditorialText(text.p1)}
+                </p>
+                <p className="editorial-highlight-para hide-on-desktop" style={{ display: 'none' }}>
+                  {highlightEditorialText(text.p1Mobile)}
                 </p>
                 <p className="editorial-body-para">
                   {highlightEditorialText(text.p2)}
@@ -230,65 +305,6 @@ export const EditorialSection = ({ t, language }) => {
                 <p className="editorial-conditions-intro">
                   {highlightEditorialText(text.p3)}
                 </p>
-                
-                {/* The Big Money Title */}
-                <motion.h4 
-                  className="editorial-big-money-title"
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, amount: 0.5 }}
-                  style={{ display: "inline-block" }}
-                >
-                  {"THE BIG MONEY".split("").map((char, index) => (
-                    <motion.span
-                      key={index}
-                      style={{ display: "inline-block" }}
-                      variants={{
-                        hidden: { color: "#ff5a36", y: 0 },
-                        visible: {
-                          color: ["#ff5a36", "#10b981", "#10b981"], // Turns green (money color)
-                          y: [0, -8, 0], // slight bounce
-                          transition: {
-                            duration: 0.6,
-                            delay: index * 0.08,
-                            ease: "easeInOut",
-                            times: [0, 0.4, 1]
-                          }
-                        }
-                      }}
-                    >
-                      {char === " " ? "\u00A0" : char}
-                    </motion.span>
-                  ))}
-                </motion.h4>
-
-                {/* Visual Goal/Conditions Grid (Gradated color) */}
-                <div className="editorial-goals-grid">
-                  {text.goals.map((g, idx) => (
-                    <motion.div 
-                      key={idx} 
-                      className={`editorial-goal-card goal-card-${idx}`}
-                      whileHover={{ 
-                        scale: 1.02, 
-                        borderRadius: "8px 8px 8px 8px"
-                      }}
-                      transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                      onClick={() => handleGoalClick(idx)}
-                    >
-                      <span className="goal-label" style={{ flex: 1, textAlign: 'left', fontWeight: 'bold' }}>{highlightEditorialText(g.label)}</span>
-                      
-                      <motion.div
-                        animate={{ x: [0, 8, 0] }}
-                        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                        style={{ display: 'flex', alignItems: 'center', opacity: 0.8, padding: '0 10px' }}
-                      >
-                        <ArrowRight size={24} />
-                      </motion.div>
-
-                      <span className="goal-value" style={{ flex: 1, textAlign: 'right' }}>{g.value}</span>
-                    </motion.div>
-                  ))}
-                </div>
               </div>
             </div>
           </div>
@@ -306,7 +322,7 @@ export const EditorialSection = ({ t, language }) => {
         <div className="infographic-section-wrapper" style={{ position: 'relative' }}>
           
           {/* Vertical Continuity Arrow (Minimalist & Fading) */}
-          <div style={{ position: 'absolute', top: '-60px', bottom: '-40px', right: '5%', width: '100px', zIndex: -1, pointerEvents: 'none' }}>
+          <div className="vertical-continuity-arrow" style={{ position: 'absolute', top: '-60px', bottom: '-40px', right: '5%', width: '100px', zIndex: -1, pointerEvents: 'none' }}>
             <svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100 100">
               <defs>
                 <linearGradient id="arrowGradient" x1="0" y1="0" x2="0" y2="1">

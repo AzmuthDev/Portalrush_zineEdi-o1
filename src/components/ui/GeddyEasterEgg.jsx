@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Confetti from 'react-confetti';
 import { Sparkles, Trash2, Eye, EyeOff, Baby, Guitar } from 'lucide-react';
@@ -25,11 +25,13 @@ export const GeddyEasterEgg = ({ onSuccess, t }) => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [showAnimationVideo, setShowAnimationVideo] = useState(false);
   const [errorCount, setErrorCount] = useState(0);
+  
+  const hiddenInputRef = useRef(null);
 
   useEffect(() => {
     if (isUnlocked) return;
     const handleKeyDown = (e) => {
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if ((e.target.tagName === 'INPUT' && !e.target.classList.contains('easter-egg-hidden-input')) || e.target.tagName === 'TEXTAREA') return;
       const key = e.key.toUpperCase();
       if (secretCode.includes(key) || key.match(/^[A-Z]$/)) {
         handleLetterClick(key, { stopPropagation: () => {} });
@@ -109,8 +111,24 @@ export const GeddyEasterEgg = ({ onSuccess, t }) => {
         {/* Left Column: Bust Image */}
         <div 
           className="easter-egg-image-wrapper"
-          onClick={handleOutsideClick}
+          onClick={(e) => {
+            hiddenInputRef.current?.focus();
+            handleOutsideClick();
+          }}
+          onTouchStart={(e) => {
+            hiddenInputRef.current?.focus();
+          }}
         >
+          <input 
+            type="text" 
+            ref={hiddenInputRef} 
+            className="easter-egg-hidden-input" 
+            style={{ opacity: 0, position: 'absolute', top: 0, left: 0, zIndex: -10, pointerEvents: 'none' }} 
+            autoComplete="off" 
+            autoCorrect="off" 
+            autoCapitalize="off" 
+            spellCheck="false"
+          />
           <img 
             src={`${import.meta.env.BASE_URL}geddy-bust-removebg.png`} 
             alt="Geddy Lee sliced sculpture" 

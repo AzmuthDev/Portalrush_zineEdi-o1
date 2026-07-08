@@ -568,3 +568,17 @@
   50% { opacity: 1; }
   100% { opacity: 0.99; }
 }
+
+.hero-zine-cover-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .hero-zine-cover-img {
+    height: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+  }
+}

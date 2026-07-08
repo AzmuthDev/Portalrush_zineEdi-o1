@@ -381,6 +381,18 @@
   }
 }
 
+@media (max-width: 576px) {
+  .blahaha-container {
+    padding: 20px 12px;
+  }
+  .blahaha-grid {
+    gap: 20px;
+  }
+  .dialogue-bubble {
+    max-width: 100%;
+  }
+}
+
 /* =============================================
    3D Pop-out Poster Styles
    ============================================= */
