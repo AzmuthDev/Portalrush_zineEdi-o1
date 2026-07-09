@@ -92,9 +92,9 @@ const TRACK_2_IMAGES = POSTS_BATCH_2;
 /* Track 3: ~81 posts (LTR) */
 const TRACK_3_IMAGES = POSTS_BATCH_3;
 
-const CARD_W = 128;
-const CARD_H = 172;
-const GAP = 12;
+const CARD_W = 170;
+const CARD_H = 230;
+const GAP = 16;
 
 /* ===== Memoized individual card — avoids re-render of all 600 cards on click ===== */
 const MarqueeCard = memo(({ itemData, cardId, isSelected, shouldLoadImage, isPriority, onClick }) => {
@@ -295,11 +295,11 @@ export const CardCarousel = () => {
           border-radius: 0 0 0.75rem 0.75rem;
         }
         .mq-info-title {
-          font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+          font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
           letter-spacing: 0.08em; color: #7bcfe7; margin: 0 0 4px 0;
         }
         .mq-info-desc {
-          font-size: 0.55rem; color: rgba(255,255,255,0.85); margin: 0 0 6px 0; line-height: 1.3;
+          font-size: 0.7rem; color: rgba(255,255,255,0.85); margin: 0 0 8px 0; line-height: 1.4;
         }
         .mq-info-link {
           font-size: 0.7rem; color: #7bcfe7; text-decoration: none;

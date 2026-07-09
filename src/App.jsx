@@ -270,7 +270,7 @@ const App = () => {
           
           <div className="nav-center">
             <a href="https://portalrushbrasil.com.br/" target="_blank" rel="noopener noreferrer" className="nav-logo">
-              <img src={`${import.meta.env.BASE_URL}logo_portalrush.png`} alt="Portal Rush Brasil" className="nav-logo-img hide-on-mobile" />
+              <img src={`${import.meta.env.BASE_URL}logo_portalrush.png`} alt="Portal Rush Brasil" className="nav-logo-img" />
             </a>
           </div>
 
@@ -321,17 +321,17 @@ const App = () => {
             transition={{ type: 'tween', duration: 0.3 }}
           >
             <div className="fullscreen-menu-links">
-              <a href="#grid" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); document.getElementById('grid')?.scrollIntoView({ behavior: 'smooth' }); }}>1. {language === 'pt' ? 'Capa' : language === 'en' ? 'Cover' : 'Portada'}</a>
-              <a href="#editorial" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); document.getElementById('editorial')?.scrollIntoView({ behavior: 'smooth' }); }}>2. Editorial</a>
-              <a href="#apoio" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); document.getElementById('apoio')?.scrollIntoView({ behavior: 'smooth' }); }}>3. {t.navApoie}</a>
-              <a href="#conteudos" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); document.getElementById('conteudos')?.scrollIntoView({ behavior: 'smooth' }); }}>4. 15 Anos de Conteúdos</a>
-              <a href="#entrevista" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); document.getElementById('entrevista')?.scrollIntoView({ behavior: 'smooth' }); }}>5. {t.navAEntrevista}</a>
-              <a href="#easter-egg" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); document.getElementById('easter-egg')?.scrollIntoView({ behavior: 'smooth' }); }}>6. Easter Egg</a>
-              <a href="#anika" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); document.getElementById('anika')?.scrollIntoView({ behavior: 'smooth' }); }}>7. {t.navONovoCapitulo}</a>
-              <a href="#loja" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); document.getElementById('loja')?.scrollIntoView({ behavior: 'smooth' }); }}>8. {language === 'pt' ? 'Camisas do Rush' : language === 'en' ? 'Rush Shirts' : 'Camisetas de Rush'}</a>
-              <a href="#blahaha" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); document.getElementById('blahaha')?.scrollIntoView({ behavior: 'smooth' }); }}>9. BLAH-BLAH-HA!!!</a>
-              <a href="#RUSH-16-Anos-Alem-do-Improvavel" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); document.getElementById('RUSH-16-Anos-Alem-do-Improvavel')?.scrollIntoView({ behavior: 'smooth' }); }}>10. {t.navSobreMim}</a>
-              <a href="#livro" onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); document.getElementById('livro')?.scrollIntoView({ behavior: 'smooth' }); }}>11. {t.navLivro}</a>
+              <a href="#grid" onClick={() => setIsMenuOpen(false)}>1. {language === 'pt' ? 'Capa' : language === 'en' ? 'Cover' : 'Portada'}</a>
+              <a href="#editorial" onClick={() => setIsMenuOpen(false)}>2. Editorial</a>
+              <a href="#apoio" onClick={() => setIsMenuOpen(false)}>3. {t.navApoie}</a>
+              <a href="#conteudos" onClick={() => setIsMenuOpen(false)}>4. 15 Anos de Conteúdos</a>
+              <a href="#entrevista" onClick={() => setIsMenuOpen(false)}>5. {t.navAEntrevista}</a>
+              <a href="#easter-egg" onClick={() => setIsMenuOpen(false)}>6. Easter Egg</a>
+              <a href="#anika" onClick={() => setIsMenuOpen(false)}>7. {t.navONovoCapitulo}</a>
+              <a href="#loja" onClick={() => setIsMenuOpen(false)}>8. {language === 'pt' ? 'Camisas do Rush' : language === 'en' ? 'Rush Shirts' : 'Camisetas de Rush'}</a>
+              <a href="#blahaha" onClick={() => setIsMenuOpen(false)}>9. BLAH-BLAH-HA!!!</a>
+              <a href="#RUSH-16-Anos-Alem-do-Improvavel" onClick={() => setIsMenuOpen(false)}>10. {t.navSobreMim}</a>
+              <a href="#livro" onClick={() => setIsMenuOpen(false)}>11. {t.navLivro}</a>
             </div>
           </motion.div>
         )}
@@ -348,29 +348,70 @@ const App = () => {
         <div className="bento-hero" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', zIndex: 10, gap: '2rem', width: '100%' }}>
           <div className="hero-zine-content-stack" style={{ width: '100%', alignItems: 'center' }}>
             <h1 className="hero-zine-header" style={{ alignItems: 'center', textAlign: 'center', width: '100%' }}>
+              {/* LOGO OFICIAL (Coruja com Batimento Laranja Lento) */}
               <img 
                 src={`${import.meta.env.BASE_URL}logo_portalrush.png`} 
                 alt="Portal Rush Brasil Logo" 
-                style={{ 
-                  height: 'auto', 
-                  width: 'clamp(120px, 20vw, 220px)', 
-                  marginBottom: '1rem', 
-                  display: 'block' 
-                }} 
+                className="hero-main-logo-anim"
               />
               <span className="hero-zine-title">PORTAL RUSH ZINE<span className="hero-title-colon">:</span></span>
               <span className="hero-zine-edition">{t.heroTitle}</span>
             </h1>
 
-            {/* Zine Cover SVG */}
-            <div className="hero-zine-cover" style={{ width: '100%', maxWidth: '1800px', marginTop: '1rem', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.7)', border: '1px solid rgba(255,255,255,0.15)' }}>
+            {/* FINAL HORIZONTAL BRANDING (Modelo 1 - Glitch Padrão) */}
+            <div className="horizontal-badge-final desktop-only-cover">
+              VERSÃO HORI
               <img 
-                src={`${import.meta.env.BASE_URL}0_CAPA_PORTAL_RUSH_ZINE.svg`} 
-                alt="Portal Rush Zine Capa" 
-                className="hero-zine-cover-img" 
+                src={`${import.meta.env.BASE_URL}ZINELOGO/Zine-Logo-Modelo-no-elements.png`} 
+                alt="Z" 
+                className="img-z" 
               />
+              ONTAL
+            </div>
+
+            {/* Zine Cover SVG & Flash Mobile Version */}
+            <div className="hero-zine-cover" style={{ width: '100%', maxWidth: '1800px', marginTop: '1rem', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.7)', border: '1px solid rgba(255,255,255,0.15)' }}>
+              
+              {/* Desktop SVG Cover */}
+              <div className="desktop-only-cover" style={{ position: 'relative' }}>
+                <img 
+                  src={`${import.meta.env.BASE_URL}0_CAPA_PORTAL_RUSH_ZINE.svg`} 
+                  alt="Portal Rush Zine Capa" 
+                  style={{ width: '100%', height: 'auto' }} 
+                />
+              </div>
+
+              {/* Mobile Flash Cover with Dynamic Ribbon */}
+              <div className="zine-flash-container mobile-only-cover">
+                <div className="flash-badge">
+                  <Zap size={14} className="flash-icon" />
+                  <span>ZINE FLASH</span>
+                </div>
+                <img 
+                  src={`${import.meta.env.BASE_URL}zine-capa-mobile-clean.png`} 
+                  alt="Entrevista Rick Beato e Geddy Lee" 
+                  className="zine-flash-bg" 
+                />
+                <div className="zine-ribbon-wrapper">
+                  <div className="zine-ribbon">
+                    <span className="dynamic-text">
+                      {t.entrevistaRibbon ? (
+                        <span dangerouslySetInnerHTML={{ __html: t.entrevistaRibbon }} />
+                      ) : (
+                        <>RICK BEATO<br />ENTREVISTA<br />GEDDY LEE</>
+                      )}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
+        </div>
+
+        {/* Floating Lightning for Mobile Scroll */}
+        <div className="floating-lightning mobile-only-cover">
+          <Zap size={24} />
         </div>
 
         {/* ===== EDITORIAL SECTION (SECOND FOLD) ===== */}
@@ -385,7 +426,7 @@ const App = () => {
           {isFooterInView && (
             <video 
               className="footer-video-bg" 
-              src={`${import.meta.env.BASE_URL}Banner_Animado_Desktop.mp4`} 
+              src={`${import.meta.env.BASE_URL}Banner_Animado_Leve.mp4`} 
               autoPlay 
               loop 
               muted 
@@ -396,6 +437,12 @@ const App = () => {
 
           <div className="footer-content-wrapper" style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingBottom: "60px", position: "relative", zIndex: 2 }}>
             <div style={{ display: "flex", gap: "24px", flexWrap: "wrap", justifyContent: "center", width: "100%", maxWidth: "900px" }}>
+              <BuyMeCoffeeCard 
+                title={<span style={{ fontFamily: "'BeyondTheLightedStage', sans-serif" }}>Quero Pagar um Café para essa Zine</span>}
+                description={<span style={{ fontSize: '1.15rem', lineHeight: '1.4', display: 'block', marginTop: '10px', fontFamily: "'BeyondTheLightedStage', sans-serif" }}>Pague um Café para a Gente para termos mais e mais <span style={{ color: '#ff8b54', fontWeight: 'bold' }}>ZINES</span></span>}
+                image={`${import.meta.env.BASE_URL}imgi_17_buy-me-a-coffee.png`} 
+                coffeeLink="https://buymeacoffee.com/portalrushzine" 
+              />
               <PixCard 
                 title={<span style={{ fontFamily: "'BeyondTheLightedStage', sans-serif" }}>🇧🇷 <span style={{color: '#009c3b'}}>P</span><span style={{color: '#ffdf00'}}>I</span><span style={{color: '#009c3b'}}>X</span>-<span style={{color: '#ff8b54'}}>ZINE</span></span>}
                 description={<span style={{ fontSize: '1.15rem', lineHeight: '1.4', display: 'block', marginTop: '10px', fontFamily: "'BeyondTheLightedStage', sans-serif" }}>Faça um PIX e aumente as edições da <span style={{ color: '#ff8b54', fontWeight: 'bold' }}>ZINE</span> do Portal Rush Brasil.</span>}
@@ -404,12 +451,6 @@ const App = () => {
                 accentColor="#009c3b"
                 bannerImage={`${import.meta.env.BASE_URL}pix-qrcode.jpeg`} 
                 qrImage={`${import.meta.env.BASE_URL}pix-qrcode.jpeg`} 
-              />
-              <BuyMeCoffeeCard 
-                title={<span style={{ fontFamily: "'BeyondTheLightedStage', sans-serif" }}>Quero Pagar um Café para essa Zine</span>}
-                description={<span style={{ fontSize: '1.15rem', lineHeight: '1.4', display: 'block', marginTop: '10px', fontFamily: "'BeyondTheLightedStage', sans-serif" }}>Pague um Café para a Gente para termos mais e mais <span style={{ color: '#ff8b54', fontWeight: 'bold' }}>ZINES</span></span>}
-                image={`${import.meta.env.BASE_URL}imgi_17_buy-me-a-coffee.png`} 
-                coffeeLink="https://buymeacoffee.com/portalrushzine" 
               />
             </div>
 
@@ -475,11 +516,10 @@ const App = () => {
 
             {/* RIGHT: ALL TOPIC CARDS (THIN HORIZONTAL) + ACCORDION */}
             <aside className="hero-side-panel">
-              {topics.map((topic, index) => {
+              {topics.map(topic => {
                 const isExpanded = expandedTopic === topic.id;
-                const isHiddenOnMobile = index >= 3;
                 return (
-                  <div key={topic.id} className={`accordion-item ${isHiddenOnMobile ? 'mobile-hidden-accordion' : ''}`}>
+                  <div key={topic.id} className="accordion-item">
                     <div
                       className={`interactive-topic-card ${isExpanded ? 'card-active' : ''}`}
                       onClick={(e) => handleCardClick(topic, e)}
@@ -528,14 +568,6 @@ const App = () => {
                   </div>
                 );
               })}
-              <button 
-                className="mobile-show-more-btn" 
-                onClick={(e) => { 
-                  e.target.closest('.hero-side-panel').classList.add('show-all-topics'); 
-                }}
-              >
-                Mostrar Mais Tópicos
-              </button>
             </aside>
 
           </div>

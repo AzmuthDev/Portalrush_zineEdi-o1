@@ -13,6 +13,7 @@ export const translations = {
     heroGuidePart2: "7 tópicos essenciais ",
     heroGuidePart3: "na entrevista de Geddy Lee com o produtor Rick Beato; novo capítulo colaborativo sobre Anika Nilles; Game com Easter Eggs & Puzzle, lojinha do Portal (disponível no Brasil).",
     collapseHint: "Recolher",
+    entrevistaRibbon: "RICK BEATO<br/>ENTREVISTA<br/>GEDDY LEE",
     
     // Cards
     t1Title: <>REAPRENDENDO <span style={{ color: '#ff0000', WebkitTextStroke: '1px #8B0000', filter: 'drop-shadow(0px 2px 2px rgba(0,0,0,0.8))' }}>RUSH</span></>,
@@ -125,6 +126,7 @@ export const translations = {
     heroGuidePart2: "7 essential topics ",
     heroGuidePart3: "in Geddy Lee's interview with producer Rick Beato; new collaborative chapter on Anika Nilles; Game with Easter Eggs & Puzzle, Portal store (available in Brazil).",
     collapseHint: "Collapse",
+    entrevistaRibbon: "RICK BEATO<br/>INTERVIEW<br/>GEDDY LEE",
     
     // Cards
     t1Title: <>RELEARNING <span style={{ color: '#ff0000', WebkitTextStroke: '1px #8B0000', filter: 'drop-shadow(0px 2px 2px rgba(0,0,0,0.8))' }}>RUSH</span></>,
@@ -237,6 +239,7 @@ export const translations = {
     heroGuidePart2: "7 temas esenciales ",
     heroGuidePart3: "en la entrevista de Geddy Lee con el productor Rick Beato; nuevo capítulo colaborativo sobre Anika Nilles; Game con Easter Eggs & Puzzle, tienda del Portal (disponible en Brasil).",
     collapseHint: "Ocultar",
+    entrevistaRibbon: "RICK BEATO<br/>ENTREVISTA<br/>GEDDY LEE",
     
     // Cards
     t1Title: <>REAPRENDIENDO <span style={{ color: '#ff0000', WebkitTextStroke: '1px #8B0000', filter: 'drop-shadow(0px 2px 2px rgba(0,0,0,0.8))' }}>RUSH</span></>,

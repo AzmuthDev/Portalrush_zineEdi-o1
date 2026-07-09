@@ -61,7 +61,7 @@ export const AboutMeSection = ({ t }) => {
           <video 
             ref={videoRef}
             className="about-me-bg-video" 
-            src={`${import.meta.env.BASE_URL}Timeline_Snakes_&_Arrows_PortalRush.mp4`} 
+            src={`${import.meta.env.BASE_URL}Timeline_Snakes_&_Arrows_Leve.mp4`} 
             autoPlay 
             loop 
             muted 

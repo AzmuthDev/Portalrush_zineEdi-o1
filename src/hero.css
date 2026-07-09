@@ -569,16 +569,193 @@
   100% { opacity: 0.99; }
 }
 
-.hero-zine-cover-img {
+/* O container base */
+.zine-flash-container { 
+  position: relative; 
+  width: 100%; 
+  max-width: 450px; 
+  aspect-ratio: 4 / 5; 
+  overflow: hidden; 
+  background-color: #111;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Ajuste da imagem de fundo para garantir preenchimento */
+.zine-flash-bg {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
-@media (max-width: 991px) {
-  .hero-zine-cover-img {
-    height: 100%;
-    aspect-ratio: 4/5;
-    object-fit: cover;
+/* O wrapper agora ocupa todo o container para permitir que a tarja gire livremente */
+.zine-ribbon-wrapper { 
+  position: absolute; 
+  bottom: 0; 
+  right: 0; 
+  width: 100%; 
+  height: 100%; 
+  overflow: hidden; 
+  z-index: 10; 
+  pointer-events: none;
+}
+
+/* A Tarja Massiva - Ajustada para o Canto Inferior Direito */
+.zine-ribbon { 
+  position: absolute; 
+  bottom: 70px;
+  right: -120px;
+  width: 500px;
+  background-color: #F8F5EE; 
+  transform: rotate(-40deg); 
+  padding: 25px 0 25px 30px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -5px -5px 30px rgba(0, 0, 0, 0.4); 
+}
+
+/* O Texto Imponente */
+.zine-ribbon .dynamic-text { 
+  color: #EB4F38; 
+  font-family: 'Bebas Neue', sans-serif; 
+  font-size: 55px; 
+  line-height: 0.85; 
+  text-transform: uppercase; 
+  text-align: left; 
+  letter-spacing: 1px;
+  display: block;
+}
+
+/* Responsive display logic for covers */
+.mobile-only-cover {
+  display: none;
+}
+.desktop-only-cover {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .mobile-only-cover {
+    display: block;
   }
+  .desktop-only-cover {
+    display: none;
+  }
+}
+
+/* =========================================
+   ZINE FLASH & HORIZONTAL BRANDING
+   ========================================= */
+
+/* Selo Zine Flash (Mobile) */
+.flash-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: rgba(17, 17, 17, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 20;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.flash-badge span {
+  color: #FFF;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.flash-badge .flash-icon {
+  color: #EB4F38; /* Laranja/Vermelho */
+  fill: #EB4F38;
+}
+
+/* Relâmpago Flutuante (Acompanha o Scroll) */
+.floating-lightning {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(17, 17, 17, 0.9);
+  border: 2px solid #FFF;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  box-shadow: 0 0 15px rgba(235, 79, 56, 0.5);
+  animation: float-pulse 3s infinite ease-in-out;
+  color: #EB4F38;
+}
+
+.floating-lightning svg {
+  fill: #EB4F38;
+}
+
+@keyframes float-pulse {
+  0% { transform: translateY(0); box-shadow: 0 0 15px rgba(235, 79, 56, 0.5); }
+  50% { transform: translateY(-10px); box-shadow: 0 0 25px rgba(235, 79, 56, 0.8); }
+  100% { transform: translateY(0); box-shadow: 0 0 15px rgba(235, 79, 56, 0.5); }
+}
+
+/* Letreiro Horizontal (Desktop) FINAL */
+.horizontal-badge-final {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 75px;
+  color: #F8F5EE;
+  background: linear-gradient(90deg, transparent, rgba(235,79,56,0.1), transparent);
+  padding: 15px 0;
+  margin-top: 10px;
+  margin-bottom: -15px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  animation: badge-expand 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.horizontal-badge-final .img-z {
+  height: 70px;
+  margin: 0 8px;
+  object-fit: contain;
+  animation: glitch-anim 2s infinite;
+}
+
+@keyframes badge-expand {
+  0% { letter-spacing: 2px; opacity: 0; }
+  100% { letter-spacing: 12px; opacity: 1; text-shadow: 0 0 10px rgba(235,79,56,0.3); }
+}
+
+@keyframes glitch-anim {
+  0%, 14%, 18%, 100% { transform: skew(0deg); filter: drop-shadow(0 0 0 transparent); }
+  15% { transform: skew(-10deg); filter: drop-shadow(-5px 0 0 cyan) drop-shadow(5px 0 0 red); }
+  16% { transform: skew(10deg); filter: drop-shadow(5px 0 0 cyan) drop-shadow(-5px 0 0 red); }
+}
+
+/* Logo Principal da Coruja (Hero) - Tamanho Imponente e Batimento Duplo Lento */
+.hero-main-logo-anim {
+  height: auto;
+  width: clamp(200px, 30vw, 350px);
+  margin: 0 auto 1.5rem auto; /* Centralizado e com margem inferior */
+  display: block;
+  animation: orange-double-beat 4s infinite;
+}
+
+@keyframes orange-double-beat {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(235,79,56,0.2)); }
+  10% { filter: drop-shadow(0 0 35px rgba(235,79,56,0.8)); } /* LUB */
+  20% { filter: drop-shadow(0 0 15px rgba(235,79,56,0.3)); }
+  30% { filter: drop-shadow(0 0 30px rgba(235,79,56,0.7)); } /* DUB */
 }
