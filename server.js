@@ -36,11 +36,17 @@ app.post('/api/subscribe', async (req, res) => {
   }
 
   try {
-    const data = await resend.contacts.create({
+    const payload = {
       email: email,
       unsubscribed: false,
-      audienceId: AUDIENCE_ID,
-    });
+    };
+    
+    // Se o usuário conseguiu achar o ID, a gente envia. Senão, vai pra default.
+    if (AUDIENCE_ID) {
+      payload.audienceId = AUDIENCE_ID;
+    }
+
+    const data = await resend.contacts.create(payload);
 
     return res.status(200).json({ message: 'Inscrito com sucesso', data });
   } catch (error) {
