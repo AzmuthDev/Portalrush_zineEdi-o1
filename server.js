@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { Resend } from 'resend';
+import { createClient } from '@supabase/supabase-js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -17,9 +17,10 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Inicializar Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
-const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID;
+// Inicializar Supabase
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+const supabase = (supabaseUrl && supabaseKey) ? createClient(supabaseUrl, supabaseKey) : null;
 
 // Rota da API de inscrição
 app.post('/api/subscribe', async (req, res) => {
@@ -30,27 +31,29 @@ app.post('/api/subscribe', async (req, res) => {
   }
 
   // Verifica se as chaves existem no ambiente
-  if (!process.env.RESEND_API_KEY || !process.env.RESEND_AUDIENCE_ID) {
-    console.warn('Simulando inscrição pois as chaves do Resend não estão configuradas.');
+  if (!supabase) {
+    console.warn('Simulando inscrição pois as chaves do Supabase não estão configuradas.');
     return res.status(200).json({ message: 'Simulado com sucesso' });
   }
 
   try {
-    const payload = {
-      email: email,
-      unsubscribed: false,
-    };
-    
-    // Se o usuário conseguiu achar o ID, a gente envia. Senão, vai pra default.
-    if (AUDIENCE_ID) {
-      payload.audienceId = AUDIENCE_ID;
-    }
+    // Insere o e-mail na tabela 'subscribers'
+    const { data, error } = await supabase
+      .from('subscribers')
+      .insert([{ email: email }])
+      .select();
 
-    const data = await resend.contacts.create(payload);
+    if (error) {
+      throw error;
+    }
 
     return res.status(200).json({ message: 'Inscrito com sucesso', data });
   } catch (error) {
-    console.error('Erro ao inscrever no Resend:', error);
+    console.error('Erro ao inscrever no Supabase:', error);
+    // Se o e-mail já existir e a coluna for UNIQUE, o erro 23505 será retornado pelo Postgres
+    if (error.code === '23505') {
+       return res.status(400).json({ error: 'E-mail já está cadastrado.' });
+    }
     return res.status(500).json({ error: 'Erro interno ao processar a inscrição' });
   }
 });
