@@ -100,6 +100,13 @@ export const translations = {
       "Gosto de escutar o RUSH, estudar, sentir e criar dentro daquele universo. Agora chegamos a esse palco digital, onde mais fãs e futuros fãs vão conhecer e colaborar com o meu trabalho, e nosso trabalho. Confere aí nosso desafio.",
       "Abraços YYZ!"
     ],
+    // Newsletter
+    nlTitle: "Assine a Zine",
+    nlSubtitle: "Receba nossas atualizações mensais, novidades e os bastidores do universo RUSH direto no seu e-mail.",
+    nlPlaceholder: "Seu melhor e-mail",
+    nlButton: "Me Inscrever",
+    nlSuccess: "Obrigado por se inscrever! O som não para.",
+    nlError: "Oops, algo deu errado. Tente novamente.",
     easterEggTitle: "Easter Egg do Geddy Lee.",
     easterEggSubtitle: "Resolva Esse Puzzle e Revelaremos a Pergunta sobre Baixo Mais Importante Já Feita Para o Geddy Lee.",
     easterEggInstruction: "Clique diretamente nas letras do\nbusto ou use o seu teclado.",
@@ -213,6 +220,13 @@ export const translations = {
       "I like listening to RUSH, studying, feeling, and creating within that universe. Now we've reached this digital stage, where more fans and future fans will get to know and collaborate with my work, and our work. Check out our challenge.",
       "Hugs YYZ!"
     ],
+    // Newsletter
+    nlTitle: "Subscribe to the Zine",
+    nlSubtitle: "Get our monthly updates, news, and behind-the-scenes of the RUSH universe right in your inbox.",
+    nlPlaceholder: "Your best email",
+    nlButton: "Subscribe",
+    nlSuccess: "Thanks for subscribing! The music never stops.",
+    nlError: "Oops, something went wrong. Try again.",
     easterEggTitle: "Geddy Lee's Easter Egg.",
     easterEggSubtitle: "Solve this puzzle and we will reveal the most important bass question ever asked to Geddy Lee.",
     easterEggInstruction: "Click directly on the letters of the\nbust or use your keyboard.",
@@ -326,6 +340,13 @@ export const translations = {
       "Me gusta escuchar a RUSH, estudiar, sentir y crear dentro de ese universo. Ahora hemos llegado a este escenario digital, donde más fans y futuros fans conocerán y colaborarán con mi trabajo, y nuestro trabajo. Echa un vistazo a nuestro desafío.",
       "¡Abrazos YYZ!"
     ],
+    // Newsletter
+    nlTitle: "Suscríbete al Zine",
+    nlSubtitle: "Recibe nuestras actualizaciones mensuales, noticias y el detrás de escena del universo RUSH directamente en tu correo.",
+    nlPlaceholder: "Tu mejor correo",
+    nlButton: "Suscribirme",
+    nlSuccess: "¡Gracias por suscribirte! La música nunca se detiene.",
+    nlError: "Oops, algo salió mal. Inténtalo de nuevo.",
     easterEggTitle: "Easter Egg de Geddy Lee.",
     easterEggSubtitle: "Resuelve este puzzle y revelaremos la pregunta de bajo más importante jamás hecha a Geddy Lee.",
     easterEggInstruction: "Haz clic directamente en las letras del\nbusto o usa tu teclado.",

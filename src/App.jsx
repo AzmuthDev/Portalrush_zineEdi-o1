@@ -25,6 +25,7 @@ import { BigMoneyCard } from './components/ui/BigMoneyCard';
 import { EditorialSection } from './components/ui/EditorialSection';
 import { BlahahaSection } from './components/ui/BlahahaSection';
 import { SectionSideLabel } from './components/ui/SectionSideLabel';
+import { NewsletterSection } from './components/ui/NewsletterSection';
 import './index.css';
 import './hero.css';
 
@@ -743,7 +744,11 @@ const App = () => {
         </div>
       </section>
 
-
+      {/* ===== NEWSLETTER SECTION ===== */}
+      <div style={{ position: 'relative' }}>
+        <SectionSideLabel number="12" title="NEWSLETTER" />
+        <NewsletterSection t={t} />
+      </div>
 
       {/* ===== FOOTER SECTION ===== */}
       <footer className="footer">
