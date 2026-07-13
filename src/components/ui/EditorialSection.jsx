@@ -13,7 +13,9 @@ export const EditorialSection = ({ t, language }) => {
     pt: {
       tagline: 'Era uma Zine que a gente tanto queria.',
       p1: 'Já tem um bom tempo que buscávamos uma amálgama de conteúdo sobre o Rush que pudesse ser: profundo, pautado na bibliografia da banda, misturado com entretenimento, gamificação, design e histórias de fãs que nenhuma IA com muitos terabytes vai conseguir contar.',
+      p1_mobile: 'Buscávamos um conteúdo sobre o Rush que unisse profundidade, entretenimento e histórias reais de fãs que nenhuma IA consegue contar.',
       p2: 'Encontramos! Era uma ZINE, uma revista digital que a gente tanto queria. Assim dá tempo (em teste) da gente elaborar, avaliar com a devida profundidade, pesquisar, ir atrás das nossas fontes. ERA Uma ZINE com cara do PORTAL, PÔXA!',
+      p2_mobile: 'Encontramos! Uma ZINE digital com a cara do PORTAL. Um formato que nos dá tempo para elaborar, pesquisar e avaliar tudo com a profundidade que a banda merece.',
       p3: 'Bem, o feedback e o rico e grande dinheiro dos nossos fãs (e futuros fãs) que vão pautar esse trabalho do Portal Rush Brasil. Veja nossas condições:',
       goals: [
         { value: 'Até $400', label: '1 edição mensal' },
@@ -24,7 +26,9 @@ export const EditorialSection = ({ t, language }) => {
     en: {
       tagline: 'The Zine we wanted so much.',
       p1: 'For a long time, we were looking for a mix of Rush content that could be: deep, based on the band\'s bibliography, mixed with entertainment, gamification, design, and fan stories that no AI with many terabytes will ever be able to tell.',
+      p1_mobile: 'We were looking for Rush content that unites depth, entertainment, and real fan stories that no AI can tell.',
       p2: 'We found it! It was a ZINE, a digital magazine we wanted so much. This gives us time (in testing) to elaborate, evaluate with the proper depth, research, and go after our sources. It was a ZINE with the Portal\'s face, boy!',
+      p2_mobile: 'We found it! A digital ZINE with PORTAL\'s face. A format that gives us time to research and evaluate everything with the depth the band deserves.',
       p3: 'Well, the feedback and the rich and big money of our fans (and future fans) will guide this work of Portal Rush Brasil. See our goals:',
       goals: [
         { value: 'Up to $400', label: '1 monthly edition' },
@@ -35,7 +39,9 @@ export const EditorialSection = ({ t, language }) => {
     es: {
       tagline: 'La Zine que tanto queríamos.',
       p1: 'Durante mucho tiempo, buscábamos una mezcla de contenido sobre Rush que pudiera ser: profundo, basado en la bibliografía de la banda, mezclado con entretenimiento, gamificación, diseño e historias de fans que ninguna IA con muitos terabytes podrá contar jamás.',
+      p1_mobile: 'Buscábamos contenido sobre Rush que uniera profundidad, entretenimiento e historias reales de fans que ninguna IA puede contar.',
       p2: '¡La encontramos! Era uma ZINE, uma revista digital que tanto queríamos. Así nos da tiempo (en prueba) de elaborar, evaluar con la debida profundidad, investigar, ir tras nuestras fuentes. ¡Era una ZINE con la cara de PORTAL, che!',
+      p2_mobile: '¡Lo encontramos! Una ZINE digital con la cara de PORTAL. Un formato que nos da tiempo para investigar y evaluar todo con la profundidad que la banda merece.',
       p3: 'Bueno, los comentarios y el rico y gran dinero de nossos fans (y futuros fans) guiarán este trabajo de Portal Rush Brasil. Mira nuestras metas:',
       goals: [
         { value: 'Hasta $400', label: '1 edición mensal' },
@@ -201,7 +207,8 @@ export const EditorialSection = ({ t, language }) => {
                 className="editorial-poster-image"
               />
               <p className="editorial-image-caption">
-                {highlightEditorialText("Tânios Acácio - Criador do Portal Rush Brasil tocando seu primeiro air guitar no show cover do Rush.")}
+                <span className="desktop-text">{highlightEditorialText("Tânios Acácio - Criador do Portal Rush Brasil tocando seu primeiro air guitar no show cover do Rush.")}</span>
+                <span className="mobile-text">{highlightEditorialText("Tânios Acácio no seu 1º air guitar de Rush.")}</span>
               </p>
             </div>
 
@@ -221,74 +228,13 @@ export const EditorialSection = ({ t, language }) => {
               
               <div className="editorial-paragraphs">
                 <p className="editorial-highlight-para">
-                  {highlightEditorialText(text.p1)}
+                  <span className="desktop-text">{highlightEditorialText(text.p1)}</span>
+                  <span className="mobile-text">{highlightEditorialText(text.p1_mobile || text.p1)}</span>
                 </p>
                 <p className="editorial-body-para">
-                  {highlightEditorialText(text.p2)}
+                  <span className="desktop-text">{highlightEditorialText(text.p2)}</span>
+                  <span className="mobile-text">{highlightEditorialText(text.p2_mobile || text.p2)}</span>
                 </p>
-                
-                <p className="editorial-conditions-intro">
-                  {highlightEditorialText(text.p3)}
-                </p>
-                
-                {/* The Big Money Title */}
-                <motion.h4 
-                  className="editorial-big-money-title"
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, amount: 0.5 }}
-                  style={{ display: "inline-block" }}
-                >
-                  {"THE BIG MONEY".split("").map((char, index) => (
-                    <motion.span
-                      key={index}
-                      style={{ display: "inline-block" }}
-                      variants={{
-                        hidden: { color: "#ff5a36", y: 0 },
-                        visible: {
-                          color: ["#ff5a36", "#10b981", "#10b981"], // Turns green (money color)
-                          y: [0, -8, 0], // slight bounce
-                          transition: {
-                            duration: 0.6,
-                            delay: index * 0.08,
-                            ease: "easeInOut",
-                            times: [0, 0.4, 1]
-                          }
-                        }
-                      }}
-                    >
-                      {char === " " ? "\u00A0" : char}
-                    </motion.span>
-                  ))}
-                </motion.h4>
-
-                {/* Visual Goal/Conditions Grid (Gradated color) */}
-                <div className="editorial-goals-grid">
-                  {text.goals.map((g, idx) => (
-                    <motion.div 
-                      key={idx} 
-                      className={`editorial-goal-card goal-card-${idx}`}
-                      whileHover={{ 
-                        scale: 1.02, 
-                        borderRadius: "8px 8px 8px 8px"
-                      }}
-                      transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                      onClick={() => handleGoalClick(idx)}
-                    >
-                      <span className="goal-label" style={{ flex: 1, textAlign: 'left', fontWeight: 'bold' }}>{highlightEditorialText(g.label)}</span>
-                      
-                      <motion.div
-                        animate={{ x: [0, 8, 0] }}
-                        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                        style={{ display: 'flex', alignItems: 'center', opacity: 0.8, padding: '0 10px' }}
-                      >
-                        <ArrowRight size={24} />
-                      </motion.div>
-
-                      <span className="goal-value" style={{ flex: 1, textAlign: 'right' }}>{g.value}</span>
-                    </motion.div>
-                  ))}
-                </div>
               </div>
             </div>
           </div>

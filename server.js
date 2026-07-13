@@ -62,7 +62,7 @@ app.post('/api/subscribe', async (req, res) => {
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Qualquer outra rota de fallback vai para o index.html do Vite
-app.get('*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 

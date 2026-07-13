@@ -55,7 +55,7 @@ export const AboutMeSection = ({ t }) => {
   }, [isInView]);
 
   return (
-    <section id="RUSH-16-Anos-Alem-do-Improvavel" className="about-me-simple-container" ref={containerRef}>
+    <section id="sobre-mim-12" className="about-me-simple-container" ref={containerRef} style={{ paddingTop: '4rem' }}>
       <div className="about-me-bg-wrapper">
         {isInView && (
           <video 

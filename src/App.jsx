@@ -18,13 +18,14 @@ import { BuyMeCoffeeCard } from './components/ui/buy-me-coffee-card';
 import { PixCard } from './components/ui/PixCard';
 import { AboutMeSection } from './components/ui/AboutMeSection';
 import { GeddyEasterEgg } from './components/ui/GeddyEasterEgg';
-import { GeddyEasterEggV2 } from './components/ui/GeddyEasterEggV2';
 import { CardCarousel } from './components/ui/CardCarousel';
 import { translations } from './translations.jsx';
 import { BigMoneyCard } from './components/ui/BigMoneyCard';
+import { BigMoneySection } from './components/ui/BigMoneySection';
 import { EditorialSection } from './components/ui/EditorialSection';
 import { BlahahaSection } from './components/ui/BlahahaSection';
 import { SectionSideLabel } from './components/ui/SectionSideLabel';
+import { AnimatedTitle } from './components/ui/AnimatedTitle';
 import { NewsletterSection } from './components/ui/NewsletterSection';
 import './index.css';
 import './hero.css';
@@ -208,6 +209,7 @@ const App = () => {
   const [videoStart, setVideoStart] = useState(null);
   const [isEasterEggActive, setIsEasterEggActive] = useState(false);
   const [isGershonActive, setIsGershonActive] = useState(false);
+  const [showHeroTitle, setShowHeroTitle] = useState(false);
   const clickSequence = useRef([]);
 
   const anikaRef = useRef(null);
@@ -218,6 +220,7 @@ const App = () => {
 
   const t = translations[language];
   const topics = getTopics(t);
+  const hasAnyActive = expandedTopic !== null;
 
   const handleCardClick = (topic, event) => {
     // Record click history for Easter Egg
@@ -322,17 +325,18 @@ const App = () => {
             transition={{ type: 'tween', duration: 0.3 }}
           >
             <div className="fullscreen-menu-links">
-              <a href="#grid" onClick={() => setIsMenuOpen(false)}>1. {language === 'pt' ? 'Capa' : language === 'en' ? 'Cover' : 'Portada'}</a>
-              <a href="#editorial" onClick={() => setIsMenuOpen(false)}>2. Editorial</a>
-              <a href="#apoio" onClick={() => setIsMenuOpen(false)}>3. {t.navApoie}</a>
-              <a href="#conteudos" onClick={() => setIsMenuOpen(false)}>4. 15 Anos de Conteúdos</a>
-              <a href="#entrevista" onClick={() => setIsMenuOpen(false)}>5. {t.navAEntrevista}</a>
-              <a href="#easter-egg" onClick={() => setIsMenuOpen(false)}>6. Easter Egg</a>
-              <a href="#anika" onClick={() => setIsMenuOpen(false)}>7. {t.navONovoCapitulo}</a>
-              <a href="#loja" onClick={() => setIsMenuOpen(false)}>8. {language === 'pt' ? 'Camisas do Rush' : language === 'en' ? 'Rush Shirts' : 'Camisetas de Rush'}</a>
-              <a href="#blahaha" onClick={() => setIsMenuOpen(false)}>9. BLAH-BLAH-HA!!!</a>
-              <a href="#RUSH-16-Anos-Alem-do-Improvavel" onClick={() => setIsMenuOpen(false)}>10. {t.navSobreMim}</a>
-              <a href="#livro" onClick={() => setIsMenuOpen(false)}>11. {t.navLivro}</a>
+              <a href="#capa-2" onClick={() => setIsMenuOpen(false)}>2. {language === 'pt' ? 'Capa' : language === 'en' ? 'Cover' : 'Portada'}</a>
+              <a href="#editorial-3" onClick={() => setIsMenuOpen(false)}>3. Editorial</a>
+              <a href="#entrevista-4" onClick={() => setIsMenuOpen(false)}>4. {t.navAEntrevista}</a>
+              <a href="#conteudos-5" onClick={() => setIsMenuOpen(false)}>5. 15 Anos de Conteúdos</a>
+              <a href="#easter-egg-6" onClick={() => setIsMenuOpen(false)}>6. Easter Egg</a>
+              <a href="#big-money-7" onClick={() => setIsMenuOpen(false)}>7. The Big Money</a>
+              <a href="#apoio-8" onClick={() => setIsMenuOpen(false)}>8. {t.navApoie}</a>
+              <a href="#novo-capitulo-9" onClick={() => setIsMenuOpen(false)}>9. {t.navONovoCapitulo}</a>
+              <a href="#camisas-10" onClick={() => setIsMenuOpen(false)}>10. {language === 'pt' ? 'Camisas do Rush' : language === 'en' ? 'Rush Shirts' : 'Camisetas de Rush'}</a>
+              <a href="#blahaha-11" onClick={() => setIsMenuOpen(false)}>11. BLAH-BLAH-HA!!!</a>
+              <a href="#sobre-mim-12" onClick={() => setIsMenuOpen(false)}>12. {t.navSobreMim}</a>
+              <a href="#livro-13" onClick={() => setIsMenuOpen(false)}>13. {t.navLivro}</a>
             </div>
           </motion.div>
         )}
@@ -344,34 +348,55 @@ const App = () => {
         <div className="bento-bg-overlay"></div>
       </div>
 
-      {/* ===== HERO + DASHBOARD SECTION ===== */}
-      <section className="dashboard-section" id="grid">
+      {/* ===== NEW HERO VIDEO SECTION ===== */}
+      <section id="hero" style={{ position: 'relative', width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', backgroundColor: '#000', zIndex: 5 }}>
+        <video 
+          src={`${import.meta.env.BASE_URL}01-hero/GEDDY%20LEE%20ZINE%20RUSH.mp4`}
+          autoPlay
+          muted
+          playsInline
+          onEnded={() => setShowHeroTitle(true)}
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+        
+        <AnimatePresence>
+          {showHeroTitle && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+              className="hero-zine-content-stack"
+              style={{ position: 'relative', zIndex: 10, width: '100%', alignItems: 'center' }}
+            >
+              <h1 className="hero-zine-header" style={{ alignItems: 'center', textAlign: 'center', width: '100%' }}>
+                <img 
+                  src={`${import.meta.env.BASE_URL}logo_portalrush.png`} 
+                  alt="Portal Rush Brasil Logo" 
+                  className="hero-main-logo-anim"
+                />
+                <span className="hero-zine-title">PORTAL RUSH ZINE<span className="hero-title-colon">:</span></span>
+                <span className="hero-zine-edition">{t.heroTitle}</span>
+              </h1>
+
+              <div className="horizontal-badge-final desktop-only-cover">
+                <span>VERSÃO HORI</span><img 
+                  src={`${import.meta.env.BASE_URL}ZINELOGO/Zine-Logo-Modelo-no-elements-removebg-preview.png`} 
+                  alt="Z" 
+                  className="img-z" 
+                /><span>ONTAL</span>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </section>
+
+      {/* ===== DASHBOARD SECTION (CAPA) ===== */}
+      <section className="dashboard-section" id="capa-2" style={{ position: 'relative', paddingTop: '4rem' }}>
+        <SectionSideLabel number="2" title={t.navCapa} animatedLogo={true} />
         <div className="bento-hero" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', zIndex: 10, gap: '2rem', width: '100%' }}>
           <div className="hero-zine-content-stack" style={{ width: '100%', alignItems: 'center' }}>
-            <h1 className="hero-zine-header" style={{ alignItems: 'center', textAlign: 'center', width: '100%' }}>
-              {/* LOGO OFICIAL (Coruja com Batimento Laranja Lento) */}
-              <img 
-                src={`${import.meta.env.BASE_URL}logo_portalrush.png`} 
-                alt="Portal Rush Brasil Logo" 
-                className="hero-main-logo-anim"
-              />
-              <span className="hero-zine-title">PORTAL RUSH ZINE<span className="hero-title-colon">:</span></span>
-              <span className="hero-zine-edition">{t.heroTitle}</span>
-            </h1>
-
-            {/* FINAL HORIZONTAL BRANDING (Modelo 1 - Glitch Padrão) */}
-            <div className="horizontal-badge-final desktop-only-cover">
-              VERSÃO HORI
-              <img 
-                src={`${import.meta.env.BASE_URL}ZINELOGO/Zine-Logo-Modelo-no-elements.png`} 
-                alt="Z" 
-                className="img-z" 
-              />
-              ONTAL
-            </div>
-
             {/* Zine Cover SVG & Flash Mobile Version */}
-            <div className="hero-zine-cover" style={{ width: '100%', maxWidth: '1800px', marginTop: '1rem', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.7)', border: '1px solid rgba(255,255,255,0.15)' }}>
+            <div className="hero-zine-cover" style={{ width: '100%', maxWidth: '1800px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.7)', border: '1px solid rgba(255,255,255,0.15)' }}>
               
               {/* Desktop SVG Cover */}
               <div className="desktop-only-cover" style={{ position: 'relative' }}>
@@ -416,88 +441,15 @@ const App = () => {
         </div>
 
         {/* ===== EDITORIAL SECTION (SECOND FOLD) ===== */}
-        <div id="editorial" style={{ position: 'relative' }}>
-          <SectionSideLabel number="2" title="EDITORIAL" />
+        <div id="editorial-3" style={{ position: 'relative', paddingTop: '4rem' }}>
+          <SectionSideLabel number="3" title={t.navEditorial} animatedLogo={true} />
           <EditorialSection t={t} language={language} />
         </div>
 
-        {/* ===== SUPPORT SECTION (MOVED UP) ===== */}
-        <section className="footer" id="apoio" ref={footerRef} style={{ position: 'relative' }}>
-          <SectionSideLabel number="3" title={t.navApoie} />
-          {isFooterInView && (
-            <video 
-              className="footer-video-bg" 
-              src={`${import.meta.env.BASE_URL}Banner_Animado_Leve.mp4`} 
-              autoPlay 
-              loop 
-              muted 
-              playsInline
-            ></video>
-          )}
-          <div className="footer-video-overlay"></div>
-
-          <div className="footer-content-wrapper" style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingBottom: "60px", position: "relative", zIndex: 2 }}>
-            <div style={{ display: "flex", gap: "24px", flexWrap: "wrap", justifyContent: "center", width: "100%", maxWidth: "900px" }}>
-              <BuyMeCoffeeCard 
-                title={<span style={{ fontFamily: "'BeyondTheLightedStage', sans-serif" }}>Quero Pagar um Café para essa Zine</span>}
-                description={<span style={{ fontSize: '1.15rem', lineHeight: '1.4', display: 'block', marginTop: '10px', fontFamily: "'BeyondTheLightedStage', sans-serif" }}>Pague um Café para a Gente para termos mais e mais <span style={{ color: '#ff8b54', fontWeight: 'bold' }}>ZINES</span></span>}
-                image={`${import.meta.env.BASE_URL}imgi_17_buy-me-a-coffee.png`} 
-                coffeeLink="https://buymeacoffee.com/portalrushzine" 
-              />
-              <PixCard 
-                title={<span style={{ fontFamily: "'BeyondTheLightedStage', sans-serif" }}>🇧🇷 <span style={{color: '#009c3b'}}>P</span><span style={{color: '#ffdf00'}}>I</span><span style={{color: '#009c3b'}}>X</span>-<span style={{color: '#ff8b54'}}>ZINE</span></span>}
-                description={<span style={{ fontSize: '1.15rem', lineHeight: '1.4', display: 'block', marginTop: '10px', fontFamily: "'BeyondTheLightedStage', sans-serif" }}>Faça um PIX e aumente as edições da <span style={{ color: '#ff8b54', fontWeight: 'bold' }}>ZINE</span> do Portal Rush Brasil.</span>}
-                borderColor="#009c3b"
-                borderBgColor="#ffdf00"
-                accentColor="#009c3b"
-                bannerImage={`${import.meta.env.BASE_URL}pix-qrcode.jpeg`} 
-                qrImage={`${import.meta.env.BASE_URL}pix-qrcode.jpeg`} 
-              />
-            </div>
-
-          </div>
-        </section>
-
-        {/* ===== 15 ANOS DE CONTEUDOS (MOVED FROM BOTTOM) ===== */}
-        <div id="conteudos" style={{ position: 'relative', paddingTop: '4rem' }}>
-          <SectionSideLabel number="4" title="15 ANOS DE CONTEÚDOS SOBRE O RUSH" />
-          <CardCarousel />
-        </div>
-
         {/* ===== TWO-COLUMN LAYOUT: VIDEO + SIDE PANEL ===== */}
-        <div id="entrevista" style={{ scrollMarginTop: '80px', marginTop: '3rem', paddingTop: '4rem', width: '100%', position: 'relative' }}>
-          <SectionSideLabel number="5" title="ENTREVISTA: BEATO/GEDDY LEE" />
-          <h2 className="interview-section-title" style={{
-            fontSize: 'clamp(1.8rem, 4vw, 3rem)',
-            fontWeight: '900',
-            color: '#fffdf6',
-            textTransform: 'uppercase',
-            textAlign: 'center',
-            fontFamily: "'Neue Machina', 'Helvetica Neue', Arial, sans-serif",
-            letterSpacing: '0.05em',
-            textShadow: '0 4px 15px rgba(0,0,0,0.6)',
-            paddingBottom: '14px',
-            borderBottom: '4px solid #ff5a36',
-            display: 'block',
-            maxWidth: '1400px',
-            margin: '0 auto 4.5rem auto',
-            position: 'relative',
-            zIndex: 2
-          }}>
-            Geddy Lee entrevistado no Rick Beato
-          </h2>
-
-          {/* Paper Note: NOTA7 - RUSH.png with overlay text */}
-          <div className="interview-note-container">
-            <div className="interview-note-paper">
-              <img src={`${import.meta.env.BASE_URL}NOTA7 - RUSH.png`} alt="Nota 7 Tópicos" className="note-paper-img" />
-              <div className="note-paper-text">
-                Destacamos <span className="highlight-seven-badge">7</span> tópicos <br />
-                na entrevista com <br />
-                Rick Beato
-              </div>
-            </div>
-          </div>
+        <div id="entrevista-4" style={{ scrollMarginTop: '80px', marginTop: '3rem', paddingTop: '4rem', width: '100%', position: 'relative' }}>
+          <SectionSideLabel number="4" title={t.navAEntrevista} animatedLogo={true} />
+          <AnimatedTitle />
 
           <div className="hero-main-layout" style={{ paddingTop: '0px' }}>
 
@@ -516,11 +468,30 @@ const App = () => {
             </div>
 
             {/* RIGHT: ALL TOPIC CARDS (THIN HORIZONTAL) + ACCORDION */}
-            <aside className="hero-side-panel">
+            <aside 
+              className="hero-side-panel"
+              style={{
+                maxHeight: hasAnyActive ? 'none' : undefined,
+                height: hasAnyActive ? 'auto' : undefined
+              }}
+            >
               {topics.map(topic => {
                 const isExpanded = expandedTopic === topic.id;
+                const isInactive = hasAnyActive && !isExpanded;
                 return (
-                  <div key={topic.id} className="accordion-item">
+                  <div 
+                    key={topic.id} 
+                    className="accordion-item"
+                    style={{
+                      maxHeight: isInactive ? '0px' : '900px',
+                      opacity: isInactive ? 0 : 1,
+                      transform: isInactive ? 'scale(0.8)' : 'scale(1)',
+                      marginBottom: isInactive ? '0px' : '18px',
+                      overflow: isInactive ? 'hidden' : 'visible',
+                      pointerEvents: isInactive ? 'none' : 'auto',
+                      transition: 'all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)'
+                    }}
+                  >
                     <div
                       className={`interactive-topic-card ${isExpanded ? 'card-active' : ''}`}
                       onClick={(e) => handleCardClick(topic, e)}
@@ -576,11 +547,18 @@ const App = () => {
 
 
 
+
+        {/* ===== 15 ANOS DE CONTEUDOS (MOVED FROM BOTTOM) ===== */}
+        <div id="conteudos-5" style={{ position: 'relative', paddingTop: '4rem' }}>
+          <SectionSideLabel number="5" title={t.navConteudos} animatedLogo={true} />
+          <CardCarousel />
+        </div>
+        
       </section>
 
       {/* ===== INTERACTIVE SCULPTURE EASTER EGG ===== */}
-      <div id="easter-egg" style={{ position: 'relative' }}>
-        <SectionSideLabel number="6" title="EASTER EGG" />
+      <div id="easter-egg-6" style={{ position: 'relative', paddingTop: '4rem' }}>
+        <SectionSideLabel number="6" title={t.navEasterEgg} />
         <GeddyEasterEgg 
           onSuccess={() => {
             setIsGershonActive(true);
@@ -590,30 +568,51 @@ const App = () => {
         />
       </div>
 
-      <div id="easter-egg-v2" style={{ position: 'relative', marginTop: '4rem' }}>
-        <SectionSideLabel number="6b" title="EASTER EGG (CAIXA DE AREIA)" />
-        <h2 style={{
-            fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
-            fontWeight: '900',
-            color: '#fffdf6',
-            textAlign: 'center',
-            fontFamily: "'Bebas Neue Pro', 'Impact', sans-serif",
-            letterSpacing: '0.05em',
-            marginBottom: '2rem'
-          }}>
-            TESTE: CAIXA DE AREIA
-        </h2>
-        <GeddyEasterEggV2 
-          onSuccess={() => {
-            console.log('Easter Egg V2 solved!');
-          }} 
-          t={t} 
-        />
+      {/* ===== THE BIG MONEY SECTION ===== */}
+      <div id="big-money-7" style={{ position: 'relative', marginTop: '4rem', paddingTop: '4rem' }}>
+        <SectionSideLabel number="7" title={t.navBigMoney} />
+        <BigMoneySection language={language} />
       </div>
 
+      {/* ===== SUPPORT SECTION (MOVED TO BOTTOM) ===== */}
+      <section className="footer" id="apoio-8" ref={footerRef} style={{ position: 'relative', paddingTop: '4rem' }}>
+        <SectionSideLabel number="8" title={t.navApoie} />
+        {isFooterInView && (
+          <video 
+            className="footer-video-bg" 
+            src={`${import.meta.env.BASE_URL}Banner_Animado_Leve.mp4`} 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+          ></video>
+        )}
+        <div className="footer-video-overlay"></div>
+
+        <div className="footer-content-wrapper" style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingBottom: "60px", position: "relative", zIndex: 2 }}>
+          <div style={{ display: "flex", gap: "24px", flexWrap: "wrap", justifyContent: "center", width: "100%", maxWidth: "900px" }}>
+            <BuyMeCoffeeCard 
+              title={<span style={{ fontFamily: "'BeyondTheLightedStage', sans-serif" }}>Quero Pagar um Café para essa Zine</span>}
+              description={<span style={{ fontSize: '1.15rem', lineHeight: '1.4', display: 'block', marginTop: '10px', fontFamily: "'BeyondTheLightedStage', sans-serif" }}>Pague um Café para a Gente para termos mais e mais <span style={{ color: '#ff8b54', fontWeight: 'bold' }}>ZINES</span></span>}
+              image={`${import.meta.env.BASE_URL}imgi_17_buy-me-a-coffee.png`} 
+              coffeeLink="https://buymeacoffee.com/portalrushzine" 
+            />
+            <PixCard 
+              title={<span style={{ fontFamily: "'BeyondTheLightedStage', sans-serif" }}>🇧🇷 <span style={{color: '#009c3b'}}>P</span><span style={{color: '#ffdf00'}}>I</span><span style={{color: '#009c3b'}}>X</span>-<span style={{color: '#ff8b54'}}>ZINE</span></span>}
+              description={<span style={{ fontSize: '1.15rem', lineHeight: '1.4', display: 'block', marginTop: '10px', fontFamily: "'BeyondTheLightedStage', sans-serif" }}>Faça um PIX e aumente as edições da <span style={{ color: '#ff8b54', fontWeight: 'bold' }}>ZINE</span> do Portal Rush Brasil.</span>}
+              borderColor="#009c3b"
+              borderBgColor="#ffdf00"
+              accentColor="#009c3b"
+              bannerImage={`${import.meta.env.BASE_URL}pix-qrcode.jpeg`} 
+              qrImage={`${import.meta.env.BASE_URL}pix-qrcode.jpeg`} 
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ===== ANIKA NILLES SECTION (DW DRUMS STYLE) ===== */}
-      <section className="anika-dw-section" id="anika" ref={anikaRef} style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#111' }}>
-        <SectionSideLabel number="7" title={t.navONovoCapitulo} />
+      <section className="anika-dw-section" id="novo-capitulo-9" ref={anikaRef} style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#111', paddingTop: '4rem' }}>
+        <SectionSideLabel number="9" title={t.navONovoCapitulo} />
         {/* Video Background Mask */}
         <div className="anika-video-mask">
           {isAnikaInView && (
@@ -682,8 +681,8 @@ const App = () => {
       </section>
 
       {/* ===== CAMISAS DO RUSH (BANNERS MOVED FROM TOP) ===== */}
-      <div id="loja" style={{ position: 'relative', padding: '6rem 24px', backgroundColor: '#111' }}>
-        <SectionSideLabel number="8" title={language === 'pt' ? 'CAMISAS DO RUSH' : language === 'en' ? 'RUSH SHIRTS' : 'CAMISETAS DE RUSH'} />
+      <div id="camisas-10" style={{ position: 'relative', padding: '4rem 24px 6rem 24px', backgroundColor: '#111' }}>
+        <SectionSideLabel number="10" title={t.navCamisas} />
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div className="footer-banners-container">
             {[
@@ -706,19 +705,22 @@ const App = () => {
 
       {/* ===== BLAH BLAH BLAH HUMOR SECTION ===== */}
       <div style={{ position: 'relative' }}>
-        <SectionSideLabel number="9" title="BLAH-BLAH-HA!!!" />
+        <SectionSideLabel number="11" title={t.navBlahaha} />
         <BlahahaSection t={t} language={language} />
       </div>
 
       {/* ===== SOBRE MIM SECTION (4TH FOLD) ===== */}
       <div style={{ position: 'relative' }}>
-        <SectionSideLabel number="10" title={t.navSobreMim} />
+        <SectionSideLabel number="12" title={t.navSobreMim} />
         <AboutMeSection t={t} />
       </div>
 
+      {/* ===== NEWSLETTER SECTION ===== */}
+      <NewsletterSection t={t} />
+
       {/* ===== CONTEXTUAL BOOK BANNER (MOVED DOWN) ===== */}
-      <section className="bento-hero" id="livro" style={{ minHeight: 'auto', padding: '0 5% 4rem 5%', display: 'flex', justifyContent: 'center', position: 'relative' }}>
-        <SectionSideLabel number="11" title={t.navLivro} />
+      <section className="bento-hero" id="livro-13" style={{ minHeight: 'auto', padding: '4rem 5% 4rem 5%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+        <SectionSideLabel number="13" title={t.navLivro} />
         <div className="bento-grid-footer" style={{ marginTop: 0, width: '100%', maxWidth: '1200px' }}>
           <a 
             href="https://www.belasletras.com.br/loja/busca.php?loja=1194178&palavra_busca=My+Effin+Life" 
@@ -744,11 +746,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* ===== NEWSLETTER SECTION ===== */}
-      <div style={{ position: 'relative' }}>
-        <SectionSideLabel number="12" title="NEWSLETTER" />
-        <NewsletterSection t={t} />
-      </div>
+
 
       {/* ===== FOOTER SECTION ===== */}
       <footer className="footer">
@@ -761,11 +759,11 @@ const App = () => {
             <div className="footer-links">
               <h4>{t.footerExplore}</h4>
               <ul>
-                <li><a href="#grid">{t.navAEntrevista}</a></li>
-                <li><a href="#anika">{t.navONovoCapitulo}</a></li>
-                <li><a href="#RUSH-16-Anos-Alem-do-Improvavel">{t.navSobreMim}</a></li>
-                <li><a href="#livro">{t.navLivro}</a></li>
-                <li><a href="#apoio">{t.navApoie}</a></li>
+                <li><a href="#entrevista-4">{t.navAEntrevista}</a></li>
+                <li><a href="#novo-capitulo-9">{t.navONovoCapitulo}</a></li>
+                <li><a href="#sobre-mim-12">{t.navSobreMim}</a></li>
+                <li><a href="#livro-13">{t.navLivro}</a></li>
+                <li><a href="#apoio-8">{t.navApoie}</a></li>
               </ul>
             </div>
           </div>

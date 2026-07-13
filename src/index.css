@@ -87,6 +87,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Hold Your Fire Black';
+  src: url('../public/fonts/HoldYourFireBlack.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* --- CSS Variables --- */
 :root {
   --bg-body: #111111;

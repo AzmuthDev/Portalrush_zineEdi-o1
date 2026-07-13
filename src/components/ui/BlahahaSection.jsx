@@ -97,7 +97,7 @@ export const BlahahaSection = ({ t, language }) => {
   ];
 
   return (
-    <section className="blahaha-section" id="blahaha">
+    <section className="blahaha-section" id="blahaha-11" style={{ paddingTop: '4rem' }}>
       <div className="blahaha-container">
         {/* Header */}
         <div className="blahaha-header">

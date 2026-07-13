@@ -6,10 +6,7 @@ export default defineConfig({
   base: '/edicao1-rick-beato-geddy-lee/',
   server: {
     proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-        changeOrigin: true
-      }
+      '/api': 'http://localhost:3000'
     }
   }
 })

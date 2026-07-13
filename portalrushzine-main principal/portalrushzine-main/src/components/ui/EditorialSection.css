@@ -1,0 +1,906 @@
+/* ==========================================================================
+   Swiss Design Poster Style Editorial Section & Fonts
+   ========================================================================== */
+
+@font-face {
+  font-family: 'SnakesAndArrowsAltBold';
+  src: url('../../../public/rushfonts/Snakes&ArrowsAltBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'MyFavoriteHeadache';
+  src: url('../../../public/rushfonts/MyFavoriteHeadache.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'VaporTrailsRemixed';
+  src: url('../../../public/rushfonts/VaporTrailsRemixed.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Beyond The Lighted Stage';
+  src: url('../../../public/rushfonts/BeyondTheLightedStage.ttf') format('truetype');
+}
+
+.editorial-section-container {
+  width: 100%;
+  max-width: 1800px;
+  margin: 4rem auto;
+  padding: 0 24px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* The Poster Frame */
+.editorial-poster-frame {
+  position: relative;
+  width: 100%;
+  min-height: 800px;
+  background-color: #ff5a36; /* Vibrant Coral Orange */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 100px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 60px 80px;
+  box-sizing: border-box;
+}
+
+/* Paper texture grain overlay */
+.poster-paper-texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.08;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  background-image: radial-gradient(circle, #000 1px, transparent 1px),
+                    radial-gradient(circle, #fff 1px, transparent 1px);
+  background-size: 3px 3px, 2px 2px;
+  background-position: 0 0, 1px 1px;
+  z-index: 5;
+}
+
+/* Creases and folds simulation */
+.poster-creases {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 6;
+  background: 
+    linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.4) 100%),
+    linear-gradient(45deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 40%, rgba(0,0,0,0.5) 100%);
+  background-size: 100% 100%;
+}
+
+/* Brand Name in Upper Right */
+.poster-brand-header {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.poster-logo-img {
+  height: 32px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.poster-brand-header span {
+  font-family: 'Neue Machina', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: 0.2em;
+  color: #fffdf6; /* Cream White */
+  text-transform: uppercase;
+}
+
+/* Swiss Geometric Background (Trapezoids/Parallelograms in lower two-thirds) */
+.swiss-geometric-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 75%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.trapezoid-shape-1 {
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 70%;
+  height: 110%;
+  background-color: #fffdf6; /* Cream White */
+  transform: skewX(-20deg);
+  border-radius: 4px;
+}
+
+.trapezoid-shape-2 {
+  position: absolute;
+  bottom: -20%;
+  right: -5%;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(255, 253, 246, 0.85); /* Slightly translucent Cream White */
+  transform: skewX(15deg);
+  border-radius: 4px;
+}
+
+/* Scattered transparent background stickers collage */
+.poster-stickers-collage-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.bg-collage-full-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.12; /* Transparent watermark styling */
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.bg-dalmata-large-bg {
+  position: absolute;
+  bottom: 8%;
+  left: 5%;
+  width: 25%;
+  max-width: 320px;
+  height: auto;
+  opacity: 0.12; /* Same transparency */
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  transform: rotate(-12deg);
+}
+
+/* Content Layout (Relative to keep it above geometry) */
+.poster-content-layout {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  height: 100%;
+  margin-top: 40px;
+}
+
+/* Title Column */
+.poster-title-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Deconstructed Title Styling (Snakes & Arrows Alt Bold) */
+.swiss-main-title {
+  font-family: 'SnakesAndArrowsAltBold', sans-serif;
+  font-size: clamp(4.5rem, 9.5vw, 10rem);
+  font-weight: 950;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  color: #fffdf6;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+}
+
+.letter-span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.letter-e {
+  transform: rotate(-3deg) scale(1.05);
+}
+
+.letter-d {
+  transform: skewX(-8deg) translateY(4px);
+  margin-left: -5px;
+}
+
+.letter-i {
+  color: #ff3b30; /* Highlighted in Coral/Red on the cream page */
+  transform: scale(1.2) rotate(4deg);
+  margin-left: 5px;
+}
+
+.letter-t {
+  transform: rotate(5deg) scale(1.1);
+  margin-top: 8px;
+}
+
+.letter-o {
+  transform: skewY(5deg) scale(0.9);
+  margin-left: -8px;
+}
+
+.letter-r {
+  transform: rotate(-6deg) scale(1.08);
+}
+
+.letter-i2 {
+  transform: translateY(-5px) scaleY(1.25);
+  margin-left: -4px;
+}
+
+.letter-a {
+  color: #ff3b30; /* Highlighted letter */
+  transform: rotate(3deg) scale(1.15);
+  margin-left: 2px;
+}
+
+.letter-l {
+  transform: skewX(12deg) translateY(6px);
+  margin-left: -6px;
+}
+
+.swiss-edition-badge {
+  background-color: #ff5a36;
+  color: #fffdf6;
+  padding: 8px 16px;
+  font-family: 'Neue Machina', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+  transform: rotate(-3deg);
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+  margin-top: 40px;
+}
+
+/* Text Column */
+.poster-text-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #1a1a1a; /* Stark dark gray for contrast on cream shape */
+  padding-right: 40px;
+}
+
+.editorial-body-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* My Favorite Headache Font (Tagline) */
+.editorial-tagline {
+  font-family: 'MyFavoriteHeadache', sans-serif;
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  font-weight: normal;
+  line-height: 1.1;
+  color: #fffdf6; /* High contrast white/cream on orange background */
+  letter-spacing: normal;
+  margin: 0;
+  text-transform: none;
+  display: inline-block;
+  background: linear-gradient(120deg, #ffe600 0%, #ffe600 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.18em;
+  background-position: 0 88%;
+  transition: background-size 0.35s cubic-bezier(0.19, 1, 0.22, 1), 
+              color 0.25s ease, 
+              transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              padding 0.3s ease;
+  cursor: pointer;
+}
+
+.editorial-tagline:hover {
+  background-size: 100% 100%;
+  color: #111 !important; /* Dark text on full yellow highlight */
+  transform: scale(1.03) rotate(-0.5deg);
+  padding: 4px 12px;
+  border-radius: 4px;
+}
+
+/* Custom highlight inside the tagline to preserve readability of "Zine" on orange */
+.editorial-tagline .highlight-text-zine {
+  color: #1a1a1a !important; 
+  background-color: #fffdf6;
+  padding: 2px 8px;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+  display: inline-block;
+  transform: rotate(-1deg);
+}
+
+.editorial-divider {
+  width: 80px;
+  height: 8px;
+  background-color: #ff5a36;
+  margin: 8px 0;
+}
+
+.editorial-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #222;
+}
+
+/* Beyond The Lighted Stage Font (Highlight text) */
+.editorial-highlight-para {
+  font-family: 'Beyond The Lighted Stage', sans-serif;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  line-height: 1.35;
+  color: #111;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+}
+
+/* Vapor Trails Remixed Font (Paragraph body text) - Now MyFavoriteHeadache */
+.editorial-body-para {
+  font-family: 'MyFavoriteHeadache', sans-serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  line-height: 1.2;
+  font-weight: normal;
+  color: #222;
+}
+
+.editorial-conditions-intro {
+  font-family: 'VaporTrailsRemixed', sans-serif;
+  font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+  color: #111; /* High contrast dark gray/black */
+  font-weight: 700;
+  margin-top: 1.2rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+  background-color: rgba(255, 253, 246, 0.85); /* Backplate to block out any background stickers */
+  padding: 8px 14px;
+  border-left: 4px solid #ff5a36; /* Orange visual accent */
+  border-radius: 0 6px 6px 0;
+  display: block;
+}
+
+.editorial-big-money-title {
+  font-family: 'SnakesAndArrowsAltBold', sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+  color: #ff5a36;
+  letter-spacing: -0.04em;
+  margin: 1.5rem 0 0.5rem 0;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+}
+
+/* Dynamic Highlights */
+.highlight-text-rush {
+  color: #ff0000 !important;
+  font-weight: bold;
+}
+
+.highlight-text-zine {
+  color: #8e3a00 !important; /* Darker burnt orange for high contrast on cream background */
+  font-weight: bold;
+}
+
+.highlight-text-portal {
+  color: #0055ff !important;
+  font-weight: bold;
+}
+
+/* Goals Grid (Vertical List) */
+.editorial-goals-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.editorial-goal-card {
+  background-color: #ff5a36;
+  color: #fffdf6;
+  padding: 16px 24px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(255, 90, 54, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* Muted / Low color card for lower value */
+.goal-card-0 {
+  background: rgba(255, 90, 54, 0.2) !important;
+  color: #d84315 !important;
+  border: 2px dashed rgba(255, 90, 54, 0.4) !important;
+  box-shadow: none !important;
+}
+.goal-card-0 .goal-value {
+  color: #d84315 !important;
+}
+
+/* Mixed Orange & Green card for middle value */
+.goal-card-1 {
+  background: linear-gradient(135deg, #ff5a36 0%, #2ecc71 100%) !important;
+  color: #fffdf6 !important;
+  box-shadow: 0 10px 25px rgba(255, 90, 54, 0.25) !important;
+}
+
+/* Full Vibrant Green card for highest value */
+.goal-card-2 {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%) !important;
+  color: #fffdf6 !important;
+  box-shadow: 0 12px 30px rgba(46, 204, 113, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.goal-value {
+  font-family: 'Neue Machina', sans-serif;
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.goal-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   Animated Infographics Section
+   ========================================================================== */
+
+.infographic-section-wrapper {
+  position: relative;
+  z-index: 4;
+  margin-top: 15px; /* Reduced margin to bring track closer to the content */
+  width: 100%;
+  border-top: 2px dashed rgba(255, 90, 54, 0.2);
+  padding-top: 15px; /* Reduced padding */
+}
+
+.infographic-row-title {
+  text-align: center;
+  margin-bottom: 60px;
+  perspective: 800px;
+}
+
+.infographic-row-title span {
+  display: inline-block;
+  font-family: 'SnakesAndArrowsAltBold', 'Neue Machina', sans-serif;
+  font-weight: 950;
+  font-size: clamp(2.5rem, 6.5vw, 4.5rem); /* Increased font-size 3x */
+  letter-spacing: 0.05em;
+  color: #fffdf6; /* White text */
+  background-color: #ff5a36; /* Coral background block */
+  padding: 16px 48px; /* Increased padding */
+  border: 6px solid #fffdf6; /* Thicker borders */
+  border-radius: 6px;
+  transform: rotate(-2deg) skewX(-5deg);
+  box-shadow: 12px 12px 0px #111; /* Increased offset shadow */
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  user-select: none;
+}
+
+.infographic-row-title span:hover {
+  transform: scale(1.06) rotate(1deg) skewX(3deg);
+  background-color: #111; /* Contrast block change */
+  color: #ff5a36; /* Contrast text change */
+  border-color: #ff5a36;
+  box-shadow: 18px 18px 0px #ff5a36; /* Increased hover shadow */
+}
+
+/* Z-Track Interactive Menu Layout */
+.z-track-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 650px;
+  margin: 0px auto; /* Reduced margin */
+  box-sizing: border-box;
+}
+
+.z-track-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.z-track-line {
+  /* Subtle animation of the dashes moving down the track! */
+  stroke-dasharray: 24 18;
+  animation: moveTrackDashes 8s linear infinite;
+}
+
+@keyframes moveTrackDashes {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -84;
+  }
+}
+
+.z-stickers-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Base sticker menu item size and hover logic */
+.sticker-menu-item {
+  position: absolute;
+  width: 22%;
+  max-width: 250px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  perspective: 1000px; /* Added 3D perspective context */
+}
+
+.sticker-menu-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Thick white sticker contour drop-shadow */
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  transform-style: preserve-3d;
+}
+
+/* Digital Zine Interactive Tooltips */
+.sticker-tooltip-card {
+  position: absolute;
+  bottom: 115%; /* Placed above the sticker */
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  background-color: #fffdf6; /* Match Swiss layout paper color */
+  border: 3px solid #ff5a36; /* Bright coral boundary */
+  padding: 8px 16px;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(255, 253, 246, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  z-index: 999;
+  pointer-events: none;
+  animation: tooltipPopIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes tooltipPopIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(15px) scale(0.7) rotate(-6deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1) rotate(-2deg);
+  }
+}
+
+.tooltip-page {
+  font-family: 'Neue Machina', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: #ff5a36;
+  letter-spacing: 0.1em;
+}
+
+.tooltip-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.tooltip-action {
+  font-family: 'Neue Machina', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 900;
+  background-color: #ff5a36;
+  color: #fffdf6;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  margin-top: 3px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Real walking loop animation along the Z track path */
+@keyframes walkTheZ {
+  0% {
+    left: 4%;
+    top: 2%;
+  }
+  30% {
+    left: 74%;
+    top: 3%;
+  }
+  70% {
+    left: 4%;
+    top: 72%;
+  }
+  100% {
+    left: 74%;
+    top: 70%;
+  }
+}
+
+.sticker-pos-1 { animation: walkTheZ 20s linear infinite; animation-delay: 0s; }
+.sticker-pos-2 { animation: walkTheZ 20s linear infinite; animation-delay: -4s; }
+.sticker-pos-3 { animation: walkTheZ 20s linear infinite; animation-delay: -8s; }
+.sticker-pos-4 { animation: walkTheZ 20s linear infinite; animation-delay: -12s; }
+.sticker-pos-5 { animation: walkTheZ 20s linear infinite; animation-delay: -16s; }
+
+/* Dynamic tilts during travel */
+.sticker-pos-1 .sticker-menu-img { transform: rotate(-5deg); }
+.sticker-pos-2 .sticker-menu-img { transform: rotate(4deg); }
+.sticker-pos-3 .sticker-menu-img { transform: rotate(-2deg); }
+.sticker-pos-4 .sticker-menu-img { transform: rotate(3deg); }
+.sticker-pos-5 .sticker-menu-img { transform: rotate(-4deg); }
+
+.sticker-menu-item:hover {
+  z-index: 200 !important;
+  animation-play-state: paused !important; /* Pause walking loop on hover */
+}
+
+/* Interactive 3D Tilts and scales on hover */
+.sticker-pos-1:hover .sticker-menu-img { transform: scale(1.25) rotateX(15deg) rotateY(-10deg) rotateZ(3deg); }
+.sticker-pos-2:hover .sticker-menu-img { transform: scale(1.25) rotateX(15deg) rotateY(10deg) rotateZ(-3deg); }
+.sticker-pos-3:hover .sticker-menu-img { transform: scale(1.25) rotateX(10deg) rotateY(-15deg) rotateZ(4deg); }
+.sticker-pos-4:hover .sticker-menu-img { transform: scale(1.25) rotateX(10deg) rotateY(15deg) rotateZ(-4deg); }
+.sticker-pos-5:hover .sticker-menu-img { transform: scale(1.25) rotateX(12deg) rotateY(-12deg) rotateZ(3deg); }
+
+
+/* Responsive Styles for Mobile Viewports */
+@media (max-width: 991px) {
+  .z-track-wrapper {
+    height: auto;
+    margin: 20px auto;
+  }
+  
+  .z-track-svg {
+    display: none; /* Hide vector lines on smaller screens */
+  }
+  
+  .z-stickers-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    height: auto;
+    width: 100%;
+  }
+  
+  .sticker-menu-item {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 42%;
+    max-width: 220px;
+    animation: none !important; /* Stop floating on mobile for ease of touch */
+  }
+  
+  .sticker-menu-item:nth-child(even) {
+    transform: rotate(3deg) !important;
+  }
+  
+  .sticker-menu-item:nth-child(odd) {
+    transform: rotate(-3deg) !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .sticker-menu-item {
+    width: 80%;
+    max-width: 260px;
+  }
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .infographic-svgs-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  .editorial-poster-frame {
+    padding: 40px;
+  }
+  
+  .poster-content-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .swiss-geometric-bg {
+    height: 100%;
+  }
+  
+  .trapezoid-shape-1 {
+    width: 120%;
+    transform: skewY(-10deg);
+    bottom: -10%;
+    height: 80%;
+  }
+  
+  .trapezoid-shape-2 {
+    display: none;
+  }
+  
+  .poster-brand-header {
+    top: 20px;
+    right: 20px;
+  }
+  
+  .swiss-main-title {
+    font-size: 5rem;
+  }
+  
+  .poster-text-col {
+    padding-right: 0;
+  }
+  
+  .editorial-goals-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .infographic-svgs-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .infographic-svgs-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Poster Editorial Image Container & styled borders */
+.editorial-poster-image-container {
+  position: relative;
+  margin: 30px auto 20px 10px;
+  padding: 10px;
+  background-color: #fffdf6; /* White inside border container */
+  border: 4px solid #ff5a36; /* Coral orange border */
+  border-radius: 12px;
+  box-shadow: 10px 10px 0px #fffdf6, 16px 16px 0px #ff5a36, 0 15px 35px rgba(0, 0, 0, 0.4);
+  transform: rotate(-3deg);
+  max-width: 280px;
+  width: 90%;
+  z-index: 5;
+  box-sizing: border-box;
+}
+
+.editorial-poster-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  border: 2px solid rgba(0,0,0,0.1);
+}
+
+.editorial-image-caption {
+  font-family: 'Beyond The Lighted Stage', sans-serif;
+  font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+  line-height: 1.3;
+  color: #111;
+  margin: 12px 0 0 0;
+  text-align: center;
+  font-weight: normal;
+  border-top: 1.5px dashed rgba(255, 90, 54, 0.35);
+  padding-top: 10px;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 991px) {
+  .editorial-poster-image-container {
+    margin: 20px auto;
+    transform: rotate(0deg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Translucent Background Watermark */
+.poster-logo-watermark {
+  position: absolute;
+  top: 35%; /* Moved up from 50% to align with the photo */
+  left: 24%; /* Placed next to / slightly behind the photo of Tânios */
+  transform: translate(-50%, -50%) rotate(-12deg);
+  width: 65%;
+  max-width: 900px;
+  opacity: 0.32; /* Screen-printed look */
+  pointer-events: none;
+  z-index: 2; /* Sits behind the text, above geometric base */
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.25));
+}
+
+.poster-logo-watermark img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Scrolling Stickers Tape */
+.poster-stickers-tape {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+  margin-top: 15px; /* Reduced margin from 40px */
+  border-top: 1px solid rgba(255, 90, 54, 0.15);
+  border-bottom: 1px solid rgba(255, 90, 54, 0.15);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.stickers-tape-track {
+  display: flex;
+  width: 200%; /* Enough to fit two repeats side-by-side */
+  height: 100%;
+  animation: scrollStickers 45s linear infinite;
+}
+
+.stickers-img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  opacity: 0.08; /* Very transparent to not clash with the content */
+  mix-blend-mode: multiply; /* Multiplies white background away */
+  padding: 8px 0;
+  box-sizing: border-box;
+}
+@keyframes scrollStickers {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+

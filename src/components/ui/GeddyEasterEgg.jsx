@@ -199,8 +199,8 @@ export const GeddyEasterEgg = ({ onSuccess, t }) => {
             </div>
           )}
 
-          {/* 2nd mistake -> Image and message */}
-          {errorCount === 2 && (
+          {/* 2nd and 3rd mistake -> Image and message */}
+          {(errorCount === 2 || errorCount === 3) && (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', width: '100%', marginTop: '16px' }}>
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
@@ -228,8 +228,8 @@ export const GeddyEasterEgg = ({ onSuccess, t }) => {
             </div>
           )}
 
-          {/* 3rd mistake -> Message only */}
-          {errorCount >= 3 && (
+          {/* After 3rd mistake -> Message only */}
+          {errorCount > 3 && (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', width: '100%', marginTop: '16px' }}>
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}

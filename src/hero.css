@@ -639,10 +639,10 @@
 
 @media (max-width: 768px) {
   .mobile-only-cover {
-    display: block;
+    display: block !important;
   }
   .desktop-only-cover {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -728,7 +728,7 @@
 
 .horizontal-badge-final .img-z {
   height: 70px;
-  margin: 0 8px;
+  margin: 0 -2px 0 -14px;
   object-fit: contain;
   animation: glitch-anim 2s infinite;
 }

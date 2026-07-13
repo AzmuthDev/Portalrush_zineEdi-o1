@@ -1,0 +1,52 @@
+.animated-title-container {
+  max-width: 1400px;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 20px;
+}
+
+/* Styled similarly to the original interview-section-title */
+.animated-title-container .interview-section-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #fffdf6;
+  text-transform: uppercase;
+  font-family: 'Neue Machina', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.05em;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  padding-bottom: 14px;
+  border-bottom: 4px solid #ff5a36;
+  margin: 0;
+  line-height: 1.3;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.animated-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.animated-char {
+  display: inline-block;
+}
+
+/* Highlight elements */
+.highlight-seven .animated-char {
+  color: #ff5a36;
+  font-weight: 900;
+  text-shadow: 0 0 10px rgba(255, 90, 54, 0.4);
+}
+
+.highlight-imp .animated-char {
+  color: #ff5a36;
+  text-shadow: 0 0 10px rgba(255, 90, 54, 0.4);
+}

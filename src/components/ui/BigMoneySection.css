@@ -1,0 +1,249 @@
+.big-money-section-container {
+  width: 100%;
+  max-width: 1500px; /* Increased from 1200px */
+  margin: 4rem auto; /* Increased margin */
+  padding: 0 24px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.big-money-card-layout {
+  background-color: #062f21; /* Dark green background */
+  border-radius: 16px;
+  padding: 60px; /* Increased padding */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.8);
+  border: 4px solid #10b981;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.big-money-card-layout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .big-money-card-layout {
+    padding: 24px;
+  }
+}
+
+.editorial-big-money-title {
+  font-family: 'Bebas Neue Pro', 'Impact', sans-serif !important;
+  font-size: clamp(3rem, 7vw, 5rem) !important;
+  text-transform: uppercase;
+  letter-spacing: 2px !important;
+  text-shadow: 0 0 15px rgba(16, 185, 129, 0.8), 0 0 30px rgba(16, 185, 129, 0.5) !important;
+  -webkit-text-stroke: 1.5px #fff;
+  margin-bottom: 0.5rem !important;
+}
+
+.big-money-subtitle {
+  font-family: 'Bebas Neue Pro', 'Impact', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  color: #10b981;
+  text-shadow: 1px 1px 0px #fff;
+}
+
+.hollow-text-neon {
+  color: transparent;
+  -webkit-text-stroke: 2px #ff5a36;
+  text-shadow: 0 0 15px rgba(255, 90, 54, 0.8), 0 0 30px rgba(255, 90, 54, 0.4);
+  letter-spacing: 2px;
+}
+
+.rush-font-p1 {
+  font-family: 'SnakesAndArrowsAltBold', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  text-align: left;
+  color: #fffdf6; /* Light for contrast */
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
+  margin-bottom: 2rem;
+}
+
+.rush-font-p2 {
+  font-family: 'BeyondTheLightedStage', sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  text-align: left;
+  color: #fffdf6; /* Light for contrast */
+  margin-bottom: 1rem;
+}
+
+.big-money-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: left;
+  color: #fffdf6; /* Light for contrast */
+  margin-bottom: 1.5rem;
+}
+
+.highlight-paragraph {
+  font-weight: 800;
+  color: #fff;
+  font-size: 1.25rem;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.big-money-campaign-box {
+  background-color: rgba(16, 185, 129, 0.15);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid #10b981;
+  box-shadow: 0 4px 25px rgba(16, 185, 129, 0.3), inset 0 0 10px rgba(16,185,129,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.campaign-box-title {
+  font-family: 'Bebas Neue Pro', 'Impact', sans-serif;
+  font-size: 2.2rem;
+  color: #10b981;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.campaign-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.campaign-date-item {
+  font-size: 1.4rem;
+  color: #111;
+  font-weight: bold;
+  background-color: #ffdf00; /* Yellow to pop */
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(255, 223, 0, 0.4);
+}
+
+.big-money-modern-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 992px) {
+  .big-money-modern-grid {
+    grid-template-columns: 1.5fr 1fr;
+    align-items: stretch;
+  }
+}
+
+.big-money-text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 4px solid #10b981;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 0 16px 16px 0;
+  padding: 30px 40px;
+  box-shadow: inset 4px 0 15px rgba(0,0,0,0.2);
+}
+
+.editorial-goals-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 2rem;
+}
+
+.big-money-goal-card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.6), rgba(16, 185, 129, 0.9));
+  border: 2px solid #fffdf6;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3), inset 0 0 15px rgba(255,255,255,0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.big-money-goal-card:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.8), #10b981);
+  box-shadow: 0 12px 40px rgba(16, 185, 129, 0.6), 0 0 20px rgba(16, 185, 129, 0.8);
+  border-color: #ff5a36;
+}
+
+@font-face {
+  font-family: 'GrandDesigns';
+  src: url('../../../public/rushfonts/GrandDesigns.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BeyondTheLightedStage';
+  src: url('../../../public/rushfonts/BeyondTheLightedStage.ttf') format('truetype');
+}
+
+.goal-name-title {
+  font-family: 'GrandDesigns', 'Impact', sans-serif;
+  font-size: 2.5rem;
+  color: #ff5a36; /* Orange color */
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.8), 0 0 15px rgba(255, 90, 54, 0.8);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+  display: block;
+  transition: all 0.3s ease;
+  animation: moneyBlink 1.5s infinite alternate;
+}
+
+@keyframes moneyBlink {
+  0% { opacity: 0.7; text-shadow: 2px 2px 0px rgba(0,0,0,0.8), 0 0 5px rgba(255, 90, 54, 0.5); transform: scale(0.98); }
+  100% { opacity: 1; text-shadow: 2px 2px 0px rgba(0,0,0,0.8), 0 0 20px #ff5a36; transform: scale(1); }
+}
+
+.big-money-goal-card:hover .goal-name-title {
+  color: #ffdf00; /* Turns Gold on hover */
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.8), 0 0 20px #ffdf00;
+  animation: none;
+}
+
+.big-money-note {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 3rem;
+  color: #10b981;
+  text-transform: uppercase;
+  background-color: #fffdf6;
+  padding: 20px;
+  border-radius: 8px;
+  border: 4px dashed #10b981;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+  animation: notePulse 2s infinite alternate;
+}
+
+@keyframes notePulse {
+  0% { transform: scale(1); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3); }
+  100% { transform: scale(1.02); box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6); }
+}

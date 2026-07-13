@@ -35,7 +35,6 @@
 .editorial-poster-frame {
   position: relative;
   width: 100%;
-  min-height: 800px;
   background-color: #ff5a36; /* Vibrant Coral Orange */
   border-radius: 20px;
   overflow: hidden;
@@ -752,8 +751,31 @@
   }
   
   .poster-content-layout {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 40px;
+  }
+  
+  .poster-title-col,
+  .poster-text-col {
+    display: contents;
+  }
+  
+  .swiss-main-title {
+    order: 1;
+  }
+  
+  .editorial-body-wrapper {
+    order: 2;
+  }
+  
+  .editorial-poster-image-container {
+    order: 3;
+    margin: 20px auto;
+  }
+  
+  .swiss-edition-badge {
+    order: 4;
   }
   
   .swiss-geometric-bg {
@@ -796,6 +818,36 @@
 @media (max-width: 576px) {
   .infographic-svgs-row {
     grid-template-columns: 1fr;
+  }
+  
+  .swiss-main-title {
+    font-size: 3.5rem;
+    line-height: 0.95;
+    margin-top: 10px;
+  }
+  
+  .poster-brand-header {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-bottom: 20px;
+    align-self: flex-start;
+  }
+  
+  .poster-brand-header span {
+    font-size: 1rem;
+  }
+  
+  .editorial-poster-frame {
+    padding: 30px 20px;
+  }
+  
+  .swiss-edition-badge {
+    margin-top: 20px;
+  }
+  
+  .editorial-tagline {
+    font-size: 1.8rem;
   }
 }
 
@@ -901,6 +953,23 @@
   }
   100% {
     transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Responsive Text Variants */
+.mobile-text {
+  display: none;
+}
+.desktop-text {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .mobile-text {
+    display: inline;
+  }
+  .desktop-text {
+    display: none;
   }
 }
 
